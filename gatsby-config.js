@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: ``,
-    author: `@gatsbyjs`
+    title: `HackYourFuture Bootcamp`,
+    description: `HackYourFuture's bootcamp boosts refugees' opportunities in the Belgian job market through the development of real-world, open source, positive impact projects.`,
+    twitter: `@HackYFutureBE`,
+    project: `HackYourFuture Belgium`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
