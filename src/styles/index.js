@@ -6,13 +6,13 @@ const GlobalStyle = createGlobalStyle`
   ${normalize}
 
   @font-face {
-    font-family: 'Open Sans Regular';
+    font-family: 'Aleo';
     src: url("...");
     font-display: swap;
   }
 
   @font-face {
-    font-family: 'Montserrat';
+    font-family: 'Karla';
     src: url("...");
     font-display: swap;
   }
@@ -29,16 +29,19 @@ const GlobalStyle = createGlobalStyle`
     background-color: #fff;
     color: ${colors.black};
     font-size: 1.6rem;
-    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Karla', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
   *, *:before, *:after {
     box-sizing: inherit;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Aleo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
   p {
     line-height: 1.6;
-    font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
   a, a:visited, a:active, a:hover {
