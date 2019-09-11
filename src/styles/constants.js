@@ -4,6 +4,7 @@ const animations = {};
 
 const colors = {
   black: '#333',
+  offWhite: '#F9F9F9',
 
   // main copy
   darkPurple: '#2F1D68',
