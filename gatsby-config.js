@@ -2,8 +2,10 @@ module.exports = {
   siteMetadata: {
     title: `HackYourFuture Bootcamp`,
     description: `HackYourFuture's bootcamp boosts refugees' opportunities in the Belgian job market through the development of real-world, open source, positive impact projects.`,
-    twitter: `@HackYFutureBE`,
-    project: `HackYourFuture Belgium`
+    twitterHandle: `@HackYFutureBE`,
+    twitter: `https://twitter.com/HackYFutureBE`,
+    url: `https://bootcamp.hackyourfuture.be`,
+    author: `HackYourFuture Belgium`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

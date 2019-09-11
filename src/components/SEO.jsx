@@ -18,6 +18,8 @@ function SEO({ description, lang, meta, title }) {
           siteMetadata {
             title
             description
+            twitter
+            url
             author
           }
         }
@@ -26,6 +28,16 @@ function SEO({ description, lang, meta, title }) {
   );
 
   const metaDescription = description || site.siteMetadata.description;
+
+  const schemaOrgJSONLD = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      creator: site.siteMetadata.author,
+      description: metaDescription,
+      name: title
+    }
+  ];
 
   return (
     <Helmet
@@ -57,7 +69,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author
+          content: site.siteMetadata.twitter
         },
         {
           name: `twitter:title`,
@@ -68,7 +80,9 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription
         }
       ].concat(meta)}
-    />
+    >
+      <script type="application/ld+json">{JSON.stringify(schemaOrgJSONLD)}</script>
+    </Helmet>
   );
 }
 
