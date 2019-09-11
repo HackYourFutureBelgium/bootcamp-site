@@ -2,6 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import Button from './Button';
 import { colors } from '../styles/constants';
 
 const HeaderStyle = styled.header`
@@ -16,6 +17,7 @@ const NavItems = styled.ul`
   list-style-type: none;
   padding: 0;
   display: flex;
+  align-items: center;
 `;
 
 const NavItem = styled.li`
@@ -42,19 +44,21 @@ const Header = () => {
       <nav>
         <NavItems>
           <NavItem>
-            <Link href="/projects">Our projects</Link>
+            <Link to="/projects">Our projects</Link>
           </NavItem>
           <NavItem>
-            <Link href="/partners">Partners</Link>
+            <Link to="/partners">Partners</Link>
           </NavItem>
           <NavItem>
-            <Link href="/faq">FAQ</Link>
+            <Link to="/faq">FAQ</Link>
           </NavItem>
           <NavItem>
-            <Link href="/contact">Contact</Link>
+            <Link to="/contact">Contact</Link>
           </NavItem>
           <NavItem>
-            <Link href="/partners">Apply now</Link>
+            <Link to="/partners">
+              <Button>Apply now</Button>
+            </Link>
           </NavItem>
         </NavItems>
       </nav>
