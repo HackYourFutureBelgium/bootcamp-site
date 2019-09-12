@@ -9,7 +9,7 @@ const StyledFooter = styled.footer`
   position: absolute;
   bottom: 0;
   left: 0;
-  box-shadow: 0 0 40px 0px rgba(81, 81, 81 0.8);
+  box-shadow: 0 1px 6px 3px rgba(81, 81, 81, 0.2);
 `;
 
 const Footer = () => <StyledFooter>Footer something something</StyledFooter>;

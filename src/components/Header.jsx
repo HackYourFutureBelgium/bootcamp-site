@@ -11,7 +11,7 @@ const HeaderStyle = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 5rem;
-  box-shadow: 0 0 40px 0px rgba(81, 81, 81 0.8);
+  box-shadow: 0 0 3px 1px rgba(81, 81, 81, 0.2);
 `;
 
 const NavItems = styled.ul`
@@ -31,7 +31,7 @@ const Header = () => {
     query {
       file(relativePath: { eq: "logo/bootcamp-subtitled.png" }) {
         childImageSharp {
-          fixed(width: 105) {
+          fixed(width: 90) {
             ...GatsbyImageSharpFixed
           }
         }

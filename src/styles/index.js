@@ -30,8 +30,8 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     background-color: #fff;
-    color: ${colors.black};
-    font-size: 1.6rem;
+    color: ${colors.darkPurple};
+    font-size: 1.5rem;
     font-family: 'Karla', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
