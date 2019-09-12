@@ -6,7 +6,7 @@ import Button from './Button';
 import { colors } from '../styles/constants';
 
 const HeaderStyle = styled.header`
-  background-color: '#fff';
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;

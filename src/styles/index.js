@@ -20,6 +20,9 @@ const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     font-size: 62.5%;
+  }
+
+  html, body, #___gatsby, #___gatsby > * {
     height: 100%;
   }
 
