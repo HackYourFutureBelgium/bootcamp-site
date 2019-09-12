@@ -14,18 +14,37 @@ const PageContainer = styled.div`
   position: relative;
 `;
 
-const Layout = ({ children }) => (
-  <>
-    <GlobalStyle />
-    <PageContainer>
-      <Header />
-      <main>{children}</main>
-      <Footer />
-    </PageContainer>
-  </>
-);
+const Main = styled.main`
+  display: block;
+  width: 100%;
+`;
+
+const FlexedMain = styled(Main)`
+  display: flex;
+  flex-grow: 1;
+  flex-flow: column;
+`;
+
+const Layout = ({ flex, children }) => {
+  const ContentWrapper = flex ? FlexedMain : Main;
+  return (
+    <>
+      <GlobalStyle />
+      <PageContainer>
+        <Header />
+        <ContentWrapper flex={flex}>{children}</ContentWrapper>
+        <Footer />
+      </PageContainer>
+    </>
+  );
+};
+
+Layout.defaultProps = {
+  flex: false
+};
 
 Layout.propTypes = {
+  flex: PropTypes.bool,
   children: PropTypes.node.isRequired
 };
 
