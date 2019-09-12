@@ -2,7 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-import Button from './Button';
+import { Button } from './UI';
 import { colors } from '../styles/constants';
 
 const HeaderStyle = styled.header`
