@@ -57,7 +57,7 @@ const Header = () => {
           </NavItem>
           <NavItem>
             <Link to="/partners">
-              <Button>Apply now</Button>
+              <Button big>Apply now</Button>
             </Link>
           </NavItem>
         </NavItems>
