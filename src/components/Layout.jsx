@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Header from './Header';
+import Footer from './Footer';
 import GlobalStyle from '../styles';
-import { colors } from '../styles/constants';
+import { colors, dimensions } from '../styles/constants';
 
 const PageContainer = styled.div`
   width: 100%;
   min-height: 100%;
   background-color: ${colors.offWhite};
+  padding-bottom: ${dimensions.footer.height};
+  position: relative;
 `;
 
 const Layout = ({ children }) => (
@@ -17,6 +20,7 @@ const Layout = ({ children }) => (
     <PageContainer>
       <Header />
       <main>{children}</main>
+      <Footer />
     </PageContainer>
   </>
 );

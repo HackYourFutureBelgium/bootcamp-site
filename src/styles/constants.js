@@ -23,6 +23,10 @@ const colors = {
   pink: '#F9DDD2'
 };
 
-const dimensions = {};
+const dimensions = {
+  footer: {
+    height: '15rem'
+  }
+};
 
 export { transitionTimes, animations, colors, dimensions };

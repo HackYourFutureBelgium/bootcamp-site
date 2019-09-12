@@ -11,6 +11,7 @@ const HeaderStyle = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 5rem;
+  box-shadow: 0 0 40px 0px rgba(81, 81, 81 0.8);
 `;
 
 const NavItems = styled.ul`
