@@ -26,33 +26,24 @@ const Card = styled.div`
 
 const ValueWrapper = styled.div`
   background: #fff;
-  padding: 3rem;
-  display: flex;
-  justify-content: space-evenly;
-  width: 80%;
+  display: grid;
   align-self: center;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 65% 35%;
+  place-items: center;
+  width: 80%;
   margin-top: -15rem;
+  padding: 3rem;
   z-index: 1;
   box-shadow: 0 0 4px 0px rgba(81, 81, 81, 0.5);
-`;
-
-const ValueItem = styled.div`
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 20%;
   p {
-    height: 25%;
+    grid-row: 2/3;
+    align-self: start;
+    text-align: center;
   }
 `;
 
 const IconWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 75%;
   img {
     max-width: 100%;
   }
@@ -74,7 +65,7 @@ const PeopleIcon = styled(IconWrapper)`
 `;
 
 const ArmIcon = styled(IconWrapper)`
-  width: 65%;
+  width: 70%;
 `;
 
 const IndexPage = () => {
@@ -104,38 +95,30 @@ const IndexPage = () => {
         </p>
       </Card>
       <ValueWrapper>
-        <ValueItem>
-          <RocketIcon>
-            <img src={rocketIcon} alt="" role="presentation" />
-          </RocketIcon>
-          <p>
-            <Highlight>4-week</Highlight> intensive bootcamp for refugees
-          </p>
-        </ValueItem>
-        <ValueItem>
-          <EditorIcon>
-            <img src={codeEditorIcon} alt="" role="presentation" />
-          </EditorIcon>
-          <p>
-            Coaching given by <Highlight>IT-experts</Highlight>
-          </p>
-        </ValueItem>
-        <ValueItem>
-          <PeopleIcon>
-            <img src={peopleIcon} alt="" role="presentation" />
-          </PeopleIcon>
-          <p>
-            open source projects with a <Highlight>positive impact</Highlight>
-          </p>
-        </ValueItem>
-        <ValueItem>
-          <ArmIcon>
-            <img src={armIcon} alt="" role="presentation" />
-          </ArmIcon>
-          <p>
-            career starter for the <Highlight>Belgian IT industry</Highlight>
-          </p>
-        </ValueItem>
+        <RocketIcon>
+          <img src={rocketIcon} alt="" role="presentation" />
+        </RocketIcon>
+        <EditorIcon>
+          <img src={codeEditorIcon} alt="" role="presentation" />
+        </EditorIcon>
+        <PeopleIcon>
+          <img src={peopleIcon} alt="" role="presentation" />
+        </PeopleIcon>
+        <ArmIcon>
+          <img src={armIcon} alt="" role="presentation" />
+        </ArmIcon>
+        <p>
+          <Highlight>4-week</Highlight> intensive bootcamp for refugees
+        </p>
+        <p>
+          Coaching given by <Highlight>IT-experts</Highlight>
+        </p>
+        <p>
+          open source projects with a <Highlight>positive impact</Highlight>
+        </p>
+        <p>
+          career starter for the <Highlight>Belgian IT industry</Highlight>
+        </p>
       </ValueWrapper>
     </Layout>
   );
