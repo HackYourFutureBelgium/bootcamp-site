@@ -2,8 +2,8 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-import { colors, dimensions } from '../styles/constants';
-import { Highlight, Card, Button, ExternalLink } from '../components/UI';
+import { dimensions } from '../styles/constants';
+import { Highlight, Card, Button, ExternalLink, DottedGraphic } from '../components/UI';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import { rocketIcon, codeEditorIcon, peopleIcon, armIcon } from '../images/icons';
@@ -72,6 +72,7 @@ const WhoCanApplyCard = styled(Card)`
   position: absolute;
   left: 30%;
   top: 18rem;
+  z-index: 2;
   ul {
     padding: 0;
     margin-left: 1.6rem;
@@ -82,6 +83,12 @@ const WhoCanApplyCard = styled(Card)`
   a {
     align-self: flex-end;
   }
+`;
+
+const DottedGraphicApply = styled(DottedGraphic)`
+  position: absolute;
+  left: 60%;
+  top: 11.5rem;
 `;
 
 const GroupImageContainer = styled.div`
@@ -178,6 +185,7 @@ const IndexPage = () => {
             <Button inverted>Apply now</Button>
           </ExternalLink>
         </WhoCanApplyCard>
+        <DottedGraphicApply />
       </WhoCanApply>
     </Layout>
   );
