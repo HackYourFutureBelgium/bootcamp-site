@@ -41,6 +41,8 @@ const GlobalStyle = createGlobalStyle`
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Aleo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: normal;
+    color: ${colors.purple}
   }
 
   p {
@@ -50,6 +52,10 @@ const GlobalStyle = createGlobalStyle`
   a, a:visited, a:active, a:hover {
     color: inherit;
     text-decoration: none;
+  }
+
+  .stronger {
+    font-weight: 600;
   }
 `;
 
