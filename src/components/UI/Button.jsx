@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import { colors } from '../../styles/constants';
 
 const StyledButton = styled.button`
-  background-color: ${colors.orange};
-  color: #fff;
-  border: none;
+  background-color: ${props => (props.inverted ? 'inherit ' : colors.orange)};
+  color: ${props => (props.inverted ? colors.orange : '#fff')};
+  border: ${props => (props.inverted ? `2px solid ${colors.orange}` : 'none')};
   border-radius: 3.2rem 0;
   font-size: 1.4rem;
   padding: 1.6rem 2.2rem;

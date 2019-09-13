@@ -7,11 +7,16 @@ const StyledCard = styled.div`
   width: 40rem;
   background: #fff;
   padding: 2rem 3rem;
-  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.2);
   ${props =>
     props.accentPosition === 'left'
-      ? `border-left: 4px solid ${colors.pink};`
-      : `border-right: 4px solid ${colors.pink};`}
+      ? `
+        border-left: 5px solid ${colors.pink};
+        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.2);
+        `
+      : `
+        border-right: 5px solid ${colors.pink};
+        box-shadow: -2px 2px 4px 0px rgba(0, 0, 0, 0.2);
+        `}
 `;
 
 const Card = ({ children, ...rest }) => {
