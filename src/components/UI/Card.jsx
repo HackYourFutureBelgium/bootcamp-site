@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { colors } from '../../styles/constants';
 
-const StyledCard = styled.div`
+const StyledCard = styled.article`
   width: 40rem;
   background: #fff;
   padding: 2rem 3rem;

@@ -2,6 +2,11 @@ const transitionTimes = {};
 
 const animations = {};
 
+const fonts = {
+  copy: `'Karla', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;`,
+  titles: `'Aleo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;`
+};
+
 const colors = {
   black: '#333',
   offWhite: '#F9F9F9',
@@ -32,4 +37,4 @@ const dimensions = {
   }
 };
 
-export { transitionTimes, animations, colors, dimensions };
+export { transitionTimes, animations, colors, dimensions, fonts };

@@ -3,7 +3,14 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { dimensions } from '../styles/constants';
-import { Highlight, Card, Button, ExternalLink, DottedGraphic } from '../components/UI';
+import {
+  Highlight,
+  Card,
+  Button,
+  ExternalLink,
+  DottedGraphic,
+  HeadshotCard
+} from '../components/UI';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import { rocketIcon, codeEditorIcon, peopleIcon, armIcon } from '../images/icons';
@@ -62,6 +69,7 @@ const ValueWrapper = styled.div`
 const WhoCanApply = styled.div`
   width: 100%;
   margin-top: 8rem;
+  margin-bottom: 25rem;
   position: relative;
 `;
 
@@ -95,8 +103,22 @@ const GroupImageContainer = styled.div`
   width: 40%;
 `;
 
+const MidSection = styled.section`
+  width: 80%;
+  margin: 0 auto;
+`;
+
+const Partners = styled(MidSection)``;
+
+const Team = styled(MidSection)``;
+
+const TeamPictures = styled.div`
+  display: flex;
+  margin-top: 4rem;
+`;
+
 const IndexPage = () => {
-  const { headerImage, groupImage } = useStaticQuery(graphql`
+  const { headerImage, groupImage, picMaite, picEvan } = useStaticQuery(graphql`
     query {
       headerImage: file(relativePath: { eq: "home-group-color.jpg" }) {
         childImageSharp {
@@ -107,8 +129,22 @@ const IndexPage = () => {
       }
       groupImage: file(relativePath: { eq: "group-small-home.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 1200) {
+          fluid(maxWidth: 1200, quality: 80) {
             ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      picMaite: file(relativePath: { eq: "headshots/maite.jpg" }) {
+        childImageSharp {
+          fixed(width: 220, quality: 90) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      picEvan: file(relativePath: { eq: "headshots/evan.jpg" }) {
+        childImageSharp {
+          fixed(width: 220, quality: 90) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
@@ -187,6 +223,33 @@ const IndexPage = () => {
         </WhoCanApplyCard>
         <DottedGraphicApply />
       </WhoCanApply>
+      <Partners>
+        <h2>
+          <span className="stronger">Partners</span> we&apos;ve worked with
+        </h2>
+      </Partners>
+      <Team>
+        <h2>
+          Meet the <span className="stronger">team</span>
+        </h2>
+        <TeamPictures>
+          <HeadshotCard
+            image={picMaite.childImageSharp.fixed}
+            name="Maïté Cluydts"
+            title="Coordinator"
+            twitter="https://twitter.com/MaiteCluydts"
+            linkedIn="https://www.linkedin.com/in/mcluydts/"
+            email="maite@hackyourfuture.be"
+          />
+          <HeadshotCard
+            image={picEvan.childImageSharp.fixed}
+            name="Evan Cole"
+            title="Coach"
+            linkedIn="https://www.linkedin.com/in/evan-cole/"
+            email="evan@hackyourfuture.be"
+          />
+        </TeamPictures>
+      </Team>
     </Layout>
   );
 };

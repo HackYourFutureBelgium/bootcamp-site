@@ -1,6 +1,6 @@
 import { normalize } from 'styled-normalize';
 import { createGlobalStyle } from 'styled-components';
-import { colors } from './constants';
+import { colors, fonts } from './constants';
 
 const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -32,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: #fff;
     color: ${colors.darkPurple};
     font-size: 1.5rem;
-    font-family: 'Karla', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: ${fonts.copy};
   }
 
   *, *:before, *:after {
@@ -40,7 +40,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Aleo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: ${fonts.title};
     font-weight: normal;
     color: ${colors.purple}
   }
