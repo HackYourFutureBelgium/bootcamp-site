@@ -3,17 +3,12 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { dimensions } from '../styles/constants';
-import {
-  Highlight,
-  Card,
-  Button,
-  ExternalLink,
-  DottedGraphic,
-  HeadshotCard
-} from '../components/UI';
+import { Highlight, Card, Button, ExternalLink, DottedGraphic } from '../components/UI';
+import HeadshotCard from '../components/HeadshotCard';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import { rocketIcon, codeEditorIcon, peopleIcon, armIcon } from '../images/icons';
+import teamData from '../data/team.json';
 
 const HeaderImageContainer = styled.aside`
   align-self: flex-end;
@@ -118,7 +113,7 @@ const TeamPictures = styled.div`
 `;
 
 const IndexPage = () => {
-  const { headerImage, groupImage, picMaite, picEvan } = useStaticQuery(graphql`
+  const { headerImage, groupImage } = useStaticQuery(graphql`
     query {
       headerImage: file(relativePath: { eq: "home-group-color.jpg" }) {
         childImageSharp {
@@ -134,23 +129,10 @@ const IndexPage = () => {
           }
         }
       }
-      picMaite: file(relativePath: { eq: "headshots/maite.jpg" }) {
-        childImageSharp {
-          fixed(width: 220, quality: 90) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      picEvan: file(relativePath: { eq: "headshots/evan.jpg" }) {
-        childImageSharp {
-          fixed(width: 220, quality: 90) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
     }
   `);
 
+  const $teamMembers = teamData.map(member => <HeadshotCard key={member.id} {...member} />);
   return (
     <Layout flex>
       <SEO title="Home" />
@@ -232,23 +214,7 @@ const IndexPage = () => {
         <h2>
           Meet the <span className="stronger">team</span>
         </h2>
-        <TeamPictures>
-          <HeadshotCard
-            image={picMaite.childImageSharp.fixed}
-            name="Maïté Cluydts"
-            title="Coordinator"
-            twitter="https://twitter.com/MaiteCluydts"
-            linkedIn="https://www.linkedin.com/in/mcluydts/"
-            email="maite@hackyourfuture.be"
-          />
-          <HeadshotCard
-            image={picEvan.childImageSharp.fixed}
-            name="Evan Cole"
-            title="Coach"
-            linkedIn="https://www.linkedin.com/in/evan-cole/"
-            email="evan@hackyourfuture.be"
-          />
-        </TeamPictures>
+        <TeamPictures>{$teamMembers}</TeamPictures>
       </Team>
     </Layout>
   );

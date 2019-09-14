@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "firstName": "Maïté",
+    "lastName": "Cluydts",
+    "role": "Coordinator",
+    "twitter": "https://twitter.com/MaiteCluydts",
+    "linkedIn": "https://www.linkedin.com/in/mcluydts/",
+    "email": "maite@hackyourfuture.be"
+  },
+  {
+    "id": 2,
+    "firstName": "Evan",
+    "lastName": "Cole",
+    "role": "Coach",
+    "linkedIn": "https://www.linkedin.com/in/evan-cole/",
+    "email": "evan@hackyourfuture.be"
+  }
+]
