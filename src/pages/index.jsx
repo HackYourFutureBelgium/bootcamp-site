@@ -1,14 +1,16 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { dimensions } from '../styles/constants';
 import { Highlight, Card, Button, ExternalLink, DottedGraphic } from '../components/UI';
-import HeadshotCard from '../components/HeadshotCard';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
+import HeadshotCard from '../components/HeadshotCard';
+import Partner from '../components/Partner';
 import { rocketIcon, codeEditorIcon, peopleIcon, armIcon } from '../images/icons';
 import teamData from '../data/team.json';
+import partnerData from '../data/featured-partners.json';
 
 const HeaderImageContainer = styled.aside`
   align-self: flex-end;
@@ -64,7 +66,7 @@ const ValueWrapper = styled.div`
 const WhoCanApply = styled.div`
   width: 100%;
   margin-top: 8rem;
-  margin-bottom: 25rem;
+  margin-bottom: 30rem;
   position: relative;
 `;
 
@@ -98,14 +100,31 @@ const GroupImageContainer = styled.div`
   width: 40%;
 `;
 
-const MidSection = styled.section`
-  width: 80%;
-  margin: 0 auto;
+const Partners = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding-left: 10%;
+  margin-bottom: 17rem;
 `;
 
-const Partners = styled(MidSection)``;
+const PartnerGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(auto-fill, 8rem);
+  place-items: center;
+  row-gap: 2rem;
+  margin-bottom: 3rem;
+`;
 
-const Team = styled(MidSection)``;
+const PartnerCTA = styled(Link)`
+  align-self: flex-end;
+`;
+
+const Team = styled.section`
+  width: 80%;
+  margin: 0 auto 8rem;
+`;
 
 const TeamPictures = styled.div`
   display: flex;
@@ -133,6 +152,7 @@ const IndexPage = () => {
   `);
 
   const $teamMembers = teamData.map(member => <HeadshotCard key={member.id} {...member} />);
+  const $partners = partnerData.map(partner => <Partner key={partner.id} {...partner} />);
   return (
     <Layout flex>
       <SEO title="Home" />
@@ -209,6 +229,10 @@ const IndexPage = () => {
         <h2>
           <span className="stronger">Partners</span> we&apos;ve worked with
         </h2>
+        <PartnerGrid>{$partners}</PartnerGrid>
+        <PartnerCTA to="/partners">
+          <Button inverted>Become a partner</Button>
+        </PartnerCTA>
       </Partners>
       <Team>
         <h2>
