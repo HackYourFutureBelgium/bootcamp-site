@@ -8,10 +8,10 @@ import { colors, fonts } from '../styles/constants';
 import { linkedInIcon, twitterIconWhite, emailIconWhite } from '../images/icons';
 
 const Card = styled.div`
-  margin-right: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 22rem;
   h4 {
     color: ${colors.darkPurple};
     font-weight: 500;
@@ -21,9 +21,13 @@ const Card = styled.div`
   }
 `;
 
+const HeadshotContainer = styled.div`
+  width: 100%;
+`;
+
 const Headshot = styled(HeadshotImg)`
   border-radius: 50%;
-  width: 100%;
+  max-width: 100%;
 `;
 
 const Socials = styled.article`
@@ -49,7 +53,7 @@ const SocialLink = styled(ExternalLink)`
   }
 `;
 
-const HeadshotCard = ({ firstName, lastName, role, twitter, linkedIn, email }) => {
+const HeadshotCard = ({ firstName, lastName, role, twitter, linkedIn, email, ...rest }) => {
   // remove all accents and diatrics from a string
   const normalize = str => {
     const combining = /[\u0300-\u036F]/g;
@@ -58,8 +62,10 @@ const HeadshotCard = ({ firstName, lastName, role, twitter, linkedIn, email }) =
 
   const fullName = `${firstName} ${lastName}`;
   return (
-    <Card>
-      <Headshot src={`${normalize(firstName)}-${normalize(lastName)}.jpg`} name={fullName} />
+    <Card {...rest}>
+      <HeadshotContainer>
+        <Headshot src={`${normalize(firstName)}-${normalize(lastName)}.jpg`} name={fullName} />
+      </HeadshotContainer>
       <h4>
         <strong>{fullName}</strong>
       </h4>

@@ -5,7 +5,7 @@ import { StaticQuery, graphql } from 'gatsby';
 
 const Headshot = ({ src, name, ...rest }) => {
   const renderHeadshot = file => (
-    <Img {...rest} fixed={file.node.childImageSharp.fixed} alt={name} />
+    <Img {...rest} fluid={file.node.childImageSharp.fluid} alt={name} />
   );
 
   return (
@@ -20,8 +20,8 @@ const Headshot = ({ src, name, ...rest }) => {
                 extension
                 relativePath
                 childImageSharp {
-                  fixed(width: 220, quality: 90) {
-                    ...GatsbyImageSharpFixed
+                  fluid(maxWidth: 220, quality: 90) {
+                    ...GatsbyImageSharpFluid
                   }
                 }
               }

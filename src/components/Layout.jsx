@@ -10,7 +10,7 @@ const PageContainer = styled.div`
   width: 100%;
   min-height: 100%;
   background-color: ${colors.offWhite};
-  padding-bottom: calc(6rem + ${dimensions.footer.height}rem);
+  padding-bottom: calc(2rem + ${dimensions.footer.height}rem);
   position: relative;
 `;
 

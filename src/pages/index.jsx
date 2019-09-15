@@ -215,12 +215,33 @@ const PartnerCTA = styled(Link)`
 
 const Team = styled.section`
   width: 80%;
-  margin: 0 auto 8rem;
+  margin: 0 0 6rem;
+  align-self: center;
+  @media (max-width: 970px) {
+    margin-bottom: 4rem;
+  }
+  @media (max-width: 930px) {
+    text-align: center;
+  }
 `;
 
 const TeamPictures = styled.div`
   display: flex;
+  flex-wrap: wrap;
   margin-top: 4rem;
+  justify-content: flex-start;
+  @media (max-width: 930px) {
+    justify-content: center;
+  }
+`;
+
+const Headshot = styled(HeadshotCard)`
+  margin-bottom: 8rem;
+  border: 1.4rem solid transparent;
+  background-clip: padding-box;
+  @media (max-width: 970px) {
+    margin-bottom: 3rem;
+  }
 `;
 
 const IndexPage = () => {
@@ -250,7 +271,7 @@ const IndexPage = () => {
     }
   `);
 
-  const $teamMembers = teamData.map(member => <HeadshotCard key={member.id} {...member} />);
+  const $teamMembers = teamData.map(member => <Headshot key={member.id} {...member} />);
   const $partners = partnerData.map(partner => <Partner key={partner.id} {...partner} />);
   return (
     <Layout flex>
@@ -352,7 +373,11 @@ const IndexPage = () => {
         <h2>
           Meet the <span className="stronger">team</span>
         </h2>
-        <TeamPictures>{$teamMembers}</TeamPictures>
+        <TeamPictures>
+          {$teamMembers}
+          {$teamMembers}
+          {$teamMembers}
+        </TeamPictures>
       </Team>
     </Layout>
   );
