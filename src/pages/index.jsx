@@ -8,7 +8,7 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import HeadshotCard from '../components/HeadshotCard';
 import QuoteCard from '../components/QuoteCard';
-import Partner from '../components/Partner';
+import PartnerLink from '../components/Partner';
 import { rocketIcon, codeEditorIcon, peopleIcon, armIcon } from '../images/icons';
 import teamData from '../data/team.json';
 import partnerData from '../data/featured-partners.json';
@@ -24,13 +24,13 @@ const HeaderImageContainer = styled.aside`
 const HeaderCard = styled(Card)`
   position: absolute;
   top: 16vw;
-  left: calc(50% - ${dimensions.card.width.default}rem);
+  left: calc(50% - ${dimensions.card.width.large}rem);
   @media (max-width: 820px) {
-    left: calc(50% - ${dimensions.card.width.default / 2}rem);
+    left: calc(50% - ${dimensions.card.width.large / 2}rem);
     top: 60vw;
   }
   @media (max-width: 400px) {
-    left: calc(50% - ${dimensions.card.width.mobile / 2}rem);
+    left: calc(50% - ${dimensions.card.width.medium / 2}rem);
     top: 60vw;
   }
 `;
@@ -104,6 +104,18 @@ const WhoCanApply = styled.div`
   margin-top: 8rem;
   margin-bottom: 36rem;
   position: relative;
+  @media (max-width: 1000px) {
+    width: 90%;
+    align-self: center;
+    margin-bottom: 10rem;
+  }
+`;
+
+const GroupImageContainer = styled.div`
+  width: 40%;
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 const WhoCanApplyCard = styled(Card)`
@@ -114,12 +126,19 @@ const WhoCanApplyCard = styled(Card)`
   left: 30%;
   top: 18rem;
   z-index: 2;
+  @media (max-width: 1000px) {
+    position: static;
+  }
+  @media (max-width: 710px) {
+    width: 100%;
+  }
   ul {
     padding: 0;
     margin-left: 1.6rem;
   }
   ul li {
     margin-bottom: 1.6rem;
+    line-height: 1.6;
   }
   a {
     align-self: flex-end;
@@ -130,10 +149,10 @@ const DottedGraphicApply = styled(DottedGraphic)`
   position: absolute;
   left: 60%;
   top: 11.5rem;
-`;
-
-const GroupImageContainer = styled.div`
-  width: 40%;
+  z-index: 0;
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 const PartnerSection = styled.section`
@@ -143,6 +162,10 @@ const PartnerSection = styled.section`
   align-items: center;
   align-self: flex-end;
   margin-bottom: 12rem;
+  @media (max-width: 1150px) {
+    align-self: center;
+    flex-direction: column;
+  }
 `;
 
 const Partners = styled.div`
@@ -152,19 +175,42 @@ const Partners = styled.div`
   h2 {
     margin-bottom: 4rem;
   }
+  @media (max-width: 1150px) {
+    width: 100%;
+    align-self: flex-start;
+    margin-bottom: 8rem;
+  }
+  @media (max-width: 880px) {
+    margin-bottom: 14rem;
+  }
+`;
+
+const Quote = styled(QuoteCard)`
+  @media (max-width: 1150px) {
+    align-self: flex-end;
+  }
+  @media (max-width: 710px) {
+    align-self: center;
+  }
 `;
 
 const PartnerGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  grid-template-rows: repeat(auto-fill, 8rem);
-  place-items: center;
-  row-gap: 2rem;
   margin-bottom: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const Partner = styled(PartnerLink)`
+  margin-right: 1.6rem;
+  margin-top: 2rem;
+  width: 12rem;
 `;
 
 const PartnerCTA = styled(Link)`
   align-self: flex-end;
+  @media (min-width: 400px) and (max-width: 1150px) {
+    align-self: flex-start;
+  }
 `;
 
 const Team = styled.section`
@@ -196,8 +242,8 @@ const IndexPage = () => {
       }
       bert: file(relativePath: { eq: "bert.jpg" }) {
         childImageSharp {
-          fixed(width: 70, quality: 100) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 70, quality: 100) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -297,14 +343,10 @@ const IndexPage = () => {
             <Button inverted>Become a partner</Button>
           </PartnerCTA>
         </Partners>
-        <QuoteCard
-          by="Bert Jehoul"
-          from="Open Recognition Belgium"
-          pic={bert.childImageSharp.fixed}
-        >
+        <Quote by="Bert Jehoul" from="Open Recognition Belgium" pic={bert.childImageSharp.fluid}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit do eiusmod tempor incididunt ut
           labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-        </QuoteCard>
+        </Quote>
       </PartnerSection>
       <Team>
         <h2>

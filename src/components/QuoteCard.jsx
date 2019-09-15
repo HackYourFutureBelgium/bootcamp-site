@@ -10,6 +10,9 @@ const Card = styled.article`
   width: 50rem;
   padding: 3rem 3rem 3rem 5rem;
   position: relative;
+  @media (max-width: 540px) {
+    width: 90vw;
+  }
   ::before,
   ::after {
     content: ' ';
@@ -39,10 +42,21 @@ const Card = styled.article`
 
 const Quotee = styled.div`
   display: flex;
+  @media (max-width: 400px) {
+    margin-top: 2rem;
+  }
+`;
+
+const HeadshotContainer = styled.div`
+  margin-right: 2rem;
+  width: 7rem;
+  @media (max-width: 400px) {
+    width: 5rem;
+  }
 `;
 
 const Headshot = styled(Img)`
-  margin-right: 2rem;
+  max-width: 100%;
   border-radius: 50% 50% 0 50%;
 `;
 
@@ -53,6 +67,9 @@ const Subject = styled.div`
     color: ${colors.darkPurple};
     font-size: 1.6rem;
     margin: 1rem 0 0.6rem;
+    @media (max-width: 400px) {
+      margin: 0 0 0.6rem;
+    }
   }
   span {
     font-style: italic;
@@ -64,7 +81,9 @@ const QuoteCard = ({ by, from, pic, children, ...rest }) => (
   <Card {...rest}>
     <p>{children}</p>
     <Quotee>
-      <Headshot fixed={pic} alt={by} />
+      <HeadshotContainer>
+        <Headshot fluid={pic} alt={by} />
+      </HeadshotContainer>
       <Subject>
         <h5>{by}</h5>
         <span>{from}</span>

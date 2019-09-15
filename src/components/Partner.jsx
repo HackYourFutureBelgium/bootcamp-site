@@ -5,7 +5,6 @@ import PartnerImg from './PartnerImg';
 import ExternalLink from './UI/ExternalLink';
 
 const PartnerLink = styled(ExternalLink)`
-  width: 100%;
   text-align: center;
 `;
 
@@ -19,8 +18,8 @@ const PartnerImage = styled(PartnerImg)`
   }
 `;
 
-const Partner = ({ name, img, website }) => (
-  <PartnerLink href={website}>
+const Partner = ({ name, img, website, ...rest }) => (
+  <PartnerLink href={website} {...rest}>
     <PartnerImage src={img} name={`${name} logo`} />
   </PartnerLink>
 );

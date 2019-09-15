@@ -34,8 +34,8 @@ const dimensions = {
   },
   card: {
     width: {
-      default: 40,
-      mobile: 32
+      large: 40,
+      medium: 32
     }
   }
 };
