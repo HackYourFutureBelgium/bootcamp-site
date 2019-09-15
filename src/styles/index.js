@@ -33,6 +33,9 @@ const GlobalStyle = createGlobalStyle`
     color: ${colors.darkPurple};
     font-size: 1.5rem;
     font-family: ${fonts.copy};
+    @media (max-width: 400px) {
+      font-size: 1.4rem;
+    }
   }
 
   *, *:before, *:after {

@@ -16,36 +16,71 @@ import partnerData from '../data/featured-partners.json';
 const HeaderImageContainer = styled.aside`
   align-self: flex-end;
   width: 65%;
+  @media (max-width: 820px) {
+    width: 100%;
+  }
 `;
 
 const HeaderCard = styled(Card)`
   position: absolute;
-  top: calc(10rem + ${dimensions.header.height});
-  left: calc(50% - 40rem);
+  top: 16vw;
+  left: calc(50% - ${dimensions.card.width.default}rem);
+  @media (max-width: 820px) {
+    left: calc(50% - ${dimensions.card.width.default / 2}rem);
+    top: 60vw;
+  }
+  @media (max-width: 400px) {
+    left: calc(50% - ${dimensions.card.width.mobile / 2}rem);
+    top: 60vw;
+  }
 `;
 
 const ValueWrapper = styled.div`
-  background: #fff;
-  display: grid;
   align-self: center;
-  grid-template-columns: repeat(4, 18%);
-  grid-template-rows: 65% 35%;
-  justify-content: space-evenly;
-  place-items: center;
+  background: #fff;
   width: 80%;
-  margin-top: -15rem;
+  margin-top: -12vw;
   padding: 3rem;
   z-index: 1;
   box-shadow: 0 0 4px 0px rgba(81, 81, 81, 0.5);
-  p {
-    grid-row: 2/3;
-    align-self: start;
-    text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  @media (max-width: 820px) {
+    position: static;
+    width: 90%;
+    margin-top: 10rem;
+    align-self: center;
+    padding: 2rem;
   }
-  > div {
-    img {
-      max-width: 100%;
+  @media (max-width: 710px) {
+    flex-wrap: wrap;
+  }
+  .values__wrapper {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    @media (max-width: 710px) {
+      width: 42%;
+      height: 46%;
+      margin-bottom: 2rem;
+      :last-of-type {
+        margin-bottom: 0;
+      }
     }
+  }
+  .values__wrapper > div {
+    display: flex;
+    align-content: center;
+    height: 65%;
+  }
+  p {
+    text-align: center;
+    vertical-align: text-top;
+    height: 35%;
+    margin-top: 0;
   }
   .values__rocket {
     width: 40%;
@@ -186,30 +221,39 @@ const IndexPage = () => {
       </HeaderCard>
       <ValueWrapper>
         {/* Leave alt tags blank, we want these illustrations to be skipped by screen readers */}
-        <div className="values__rocket">
-          <img src={rocketIcon} alt="" role="presentation" />
+        <div className="values__wrapper">
+          <div className="values__rocket">
+            <img src={rocketIcon} alt="" role="presentation" />
+          </div>
+          <p>
+            <Highlight>4-week</Highlight> intensive bootcamp for refugees
+          </p>
         </div>
-        <div className="values__editor">
-          <img src={codeEditorIcon} alt="" role="presentation" />
+        <div className="values__wrapper">
+          <div className="values__editor">
+            <img src={codeEditorIcon} alt="" role="presentation" />
+          </div>
+          <p>
+            Coaching given by <Highlight>IT-experts</Highlight>
+          </p>
         </div>
-        <div className="values__people">
-          <img src={peopleIcon} alt="" role="presentation" />
+        <div className="values__wrapper">
+          <div className="values__people">
+            <img src={peopleIcon} alt="" role="presentation" />
+          </div>
+
+          <p>
+            open source projects with a <Highlight>positive impact</Highlight>
+          </p>
         </div>
-        <div className="values__arm">
-          <img src={armIcon} alt="" role="presentation" />
+        <div className="values__wrapper">
+          <div className="values__arm">
+            <img src={armIcon} alt="" role="presentation" />
+          </div>
+          <p>
+            career starter for the <Highlight>Belgian IT industry</Highlight>
+          </p>
         </div>
-        <p>
-          <Highlight>4-week</Highlight> intensive bootcamp for refugees
-        </p>
-        <p>
-          Coaching given by <Highlight>IT-experts</Highlight>
-        </p>
-        <p>
-          open source projects with a <Highlight>positive impact</Highlight>
-        </p>
-        <p>
-          career starter for the <Highlight>Belgian IT industry</Highlight>
-        </p>
       </ValueWrapper>
       <WhoCanApply>
         <GroupImageContainer>

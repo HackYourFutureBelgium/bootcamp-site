@@ -14,7 +14,7 @@ const StyledFooter = styled.footer`
   background-color: #fff;
   padding: 2.5rem 10%;
   width: 100%;
-  height: ${dimensions.footer.height};
+  height: ${dimensions.footer.height}rem;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -122,7 +122,7 @@ const Footer = () => {
       }
     }
   `);
-  console.log(okbeLogo);
+
   const position = [50.8455124, 4.3574726];
 
   const icon = new L.Icon({

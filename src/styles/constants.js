@@ -30,10 +30,13 @@ const colors = {
 
 const dimensions = {
   footer: {
-    height: '26rem'
+    height: 26
   },
-  header: {
-    height: '10.7rem'
+  card: {
+    width: {
+      default: 40,
+      mobile: 32
+    }
   }
 };
 
