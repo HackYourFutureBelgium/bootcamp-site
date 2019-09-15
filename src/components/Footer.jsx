@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import L from 'leaflet';
+import Img from 'gatsby-image';
+import { useStaticQuery, graphql } from 'gatsby';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import { ExternalLink } from './UI';
 import { dimensions, fonts, colors } from '../styles/constants';
@@ -72,7 +74,11 @@ const Facebook = styled(DetailItem)`
   background-image: url(${facebookIcon});
 `;
 
-const StayInformed = styled.div``;
+const StayInformed = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 
 const MailingSignup = styled.div`
   display: flex;
@@ -96,10 +102,28 @@ const MailingSignup = styled.div`
   }
 `;
 
-const LogoContainer = styled.div``;
+const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  span {
+    margin-right: 1rem;
+  }
+`;
 
 const Footer = () => {
-  const position = [50.844116, 4.3544959];
+  const { okbeLogo } = useStaticQuery(graphql`
+    query {
+      okbeLogo: file(relativePath: { eq: "logo/okbe-purple.png" }) {
+        childImageSharp {
+          fixed(width: 160) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `);
+  console.log(okbeLogo);
+  const position = [50.8455124, 4.3574726];
 
   const icon = new L.Icon({
     iconUrl: markerIcon,
@@ -115,7 +139,7 @@ const Footer = () => {
   return (
     <StyledFooter>
       <MapContainer>
-        <StyledMap center={position} zoom={16}>
+        <StyledMap center={position} zoom={15}>
           <TileLayer
             url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"
             attribution={`&copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions" target="_blank">CARTO</a>`}
@@ -160,6 +184,10 @@ const Footer = () => {
             <input aria-label="Subscribe" type="submit" value=">" />
           </form>
         </MailingSignup>
+        <LogoContainer>
+          <span>powered by</span>
+          <Img fixed={okbeLogo.childImageSharp.fixed} alt="Open Knowledge Belgium logo" />
+        </LogoContainer>
       </StayInformed>
     </StyledFooter>
   );
