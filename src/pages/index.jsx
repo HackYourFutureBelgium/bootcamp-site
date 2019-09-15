@@ -7,6 +7,7 @@ import { Highlight, Card, Button, ExternalLink, DottedGraphic } from '../compone
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import HeadshotCard from '../components/HeadshotCard';
+import QuoteCard from '../components/QuoteCard';
 import Partner from '../components/Partner';
 import { rocketIcon, codeEditorIcon, peopleIcon, armIcon } from '../images/icons';
 import teamData from '../data/team.json';
@@ -66,7 +67,7 @@ const ValueWrapper = styled.div`
 const WhoCanApply = styled.div`
   width: 100%;
   margin-top: 8rem;
-  margin-bottom: 30rem;
+  margin-bottom: 38rem;
   position: relative;
 `;
 
@@ -100,12 +101,19 @@ const GroupImageContainer = styled.div`
   width: 40%;
 `;
 
-const Partners = styled.section`
+const PartnerSection = styled.section`
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+  align-self: flex-end;
+  margin-bottom: 17rem;
+`;
+
+const Partners = styled.div`
   display: flex;
   flex-direction: column;
-  width: 60%;
-  padding-left: 10%;
-  margin-bottom: 17rem;
+  width: 50%;
 `;
 
 const PartnerGrid = styled.div`
@@ -132,7 +140,7 @@ const TeamPictures = styled.div`
 `;
 
 const IndexPage = () => {
-  const { headerImage, groupImage } = useStaticQuery(graphql`
+  const { headerImage, groupImage, bert } = useStaticQuery(graphql`
     query {
       headerImage: file(relativePath: { eq: "home-group-color.jpg" }) {
         childImageSharp {
@@ -145,6 +153,13 @@ const IndexPage = () => {
         childImageSharp {
           fluid(maxWidth: 1200, quality: 80) {
             ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      bert: file(relativePath: { eq: "bert.jpg" }) {
+        childImageSharp {
+          fixed(width: 70, quality: 100) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
@@ -225,15 +240,25 @@ const IndexPage = () => {
         </WhoCanApplyCard>
         <DottedGraphicApply />
       </WhoCanApply>
-      <Partners>
-        <h2>
-          <span className="stronger">Partners</span> we&apos;ve worked with
-        </h2>
-        <PartnerGrid>{$partners}</PartnerGrid>
-        <PartnerCTA to="/partners">
-          <Button inverted>Become a partner</Button>
-        </PartnerCTA>
-      </Partners>
+      <PartnerSection>
+        <Partners>
+          <h2>
+            <span className="stronger">Partners</span> we&apos;ve worked with
+          </h2>
+          <PartnerGrid>{$partners}</PartnerGrid>
+          <PartnerCTA to="/partners">
+            <Button inverted>Become a partner</Button>
+          </PartnerCTA>
+        </Partners>
+        <QuoteCard
+          by="Bert Jehoul"
+          from="Open Recognition Belgium"
+          pic={bert.childImageSharp.fixed}
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+        </QuoteCard>
+      </PartnerSection>
       <Team>
         <h2>
           Meet the <span className="stronger">team</span>

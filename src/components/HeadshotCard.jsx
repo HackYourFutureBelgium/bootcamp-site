@@ -5,10 +5,7 @@ import unorm from 'unorm';
 import HeadshotImg from './HeadshotImg';
 import ExternalLink from './UI/ExternalLink';
 import { colors, fonts } from '../styles/constants';
-
-import linkedInIcon from '../images/icons/linkedin.svg';
-import twitterIcon from '../images/icons/twitter.svg';
-import emailIcon from '../images/icons/email-white.svg';
+import { linkedInIcon, twitterIcon, emailIconWhite } from '../images/icons';
 
 const Card = styled.div`
   margin-right: 5rem;
@@ -80,7 +77,7 @@ const HeadshotCard = ({ firstName, lastName, role, twitter, linkedIn, email }) =
         )}
         {email && (
           <SocialLink href={`mailto:${email}`} openInNewTab={false}>
-            <img src={emailIcon} alt={`Email of ${fullName}`} />
+            <img src={emailIconWhite} alt={`Email of ${fullName}`} />
           </SocialLink>
         )}
       </Socials>
