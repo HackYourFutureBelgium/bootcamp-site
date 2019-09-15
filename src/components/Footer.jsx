@@ -77,6 +77,23 @@ const StayInformed = styled.div``;
 const MailingSignup = styled.div`
   display: flex;
   flex-direction: column;
+  form {
+    display: flex;
+    input[type='email'] {
+      width: 20rem;
+      border: 1px solid ${colors.orange};
+      padding-left: 1rem;
+    }
+    input[type='submit'] {
+      background: ${colors.orange};
+      height: 5rem;
+      width: 6rem;
+      color: #fff;
+      border: 0;
+      font-size: 2.2rem;
+      cursor: pointer;
+    }
+  }
 `;
 
 const LogoContainer = styled.div``;
@@ -132,6 +149,16 @@ const Footer = () => {
       <StayInformed>
         <MailingSignup>
           <h5>Subscribe to our mailing list</h5>
+          <form
+            action="https://hackyourfuture.us18.list-manage.com/subscribe/post"
+            target="_blank"
+            method="POST"
+          >
+            <input type="hidden" name="u" value="54f620a7a642bc8cf6178e441" />
+            <input type="hidden" name="id" value="449a9fa432" />
+            <input type="email" name="MERGE0" id="MERGE0" placeholder="E-mail address" />
+            <input aria-label="Subscribe" type="submit" value=">" />
+          </form>
         </MailingSignup>
       </StayInformed>
     </StyledFooter>
