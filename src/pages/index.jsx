@@ -67,7 +67,7 @@ const ValueWrapper = styled.div`
 const WhoCanApply = styled.div`
   width: 100%;
   margin-top: 8rem;
-  margin-bottom: 38rem;
+  margin-bottom: 36rem;
   position: relative;
 `;
 
@@ -107,13 +107,16 @@ const PartnerSection = styled.section`
   justify-content: space-between;
   align-items: center;
   align-self: flex-end;
-  margin-bottom: 17rem;
+  margin-bottom: 12rem;
 `;
 
 const Partners = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
+  h2 {
+    margin-bottom: 4rem;
+  }
 `;
 
 const PartnerGrid = styled.div`

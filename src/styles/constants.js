@@ -30,7 +30,7 @@ const colors = {
 
 const dimensions = {
   footer: {
-    height: '15rem'
+    height: '26rem'
   },
   header: {
     height: '10.7rem'

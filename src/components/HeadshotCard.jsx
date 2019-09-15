@@ -5,7 +5,7 @@ import unorm from 'unorm';
 import HeadshotImg from './HeadshotImg';
 import ExternalLink from './UI/ExternalLink';
 import { colors, fonts } from '../styles/constants';
-import { linkedInIcon, twitterIcon, emailIconWhite } from '../images/icons';
+import { linkedInIcon, twitterIconWhite, emailIconWhite } from '../images/icons';
 
 const Card = styled.div`
   margin-right: 5rem;
@@ -72,7 +72,7 @@ const HeadshotCard = ({ firstName, lastName, role, twitter, linkedIn, email }) =
         )}
         {twitter && (
           <SocialLink href={twitter}>
-            <img src={twitterIcon} alt={`Twitter of ${fullName}`} />
+            <img src={twitterIconWhite} alt={`Twitter of ${fullName}`} />
           </SocialLink>
         )}
         {email && (
