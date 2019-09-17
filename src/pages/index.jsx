@@ -373,11 +373,7 @@ const IndexPage = () => {
         <h2>
           Meet the <span className="stronger">team</span>
         </h2>
-        <TeamPictures>
-          {$teamMembers}
-          {$teamMembers}
-          {$teamMembers}
-        </TeamPictures>
+        <TeamPictures>{$teamMembers}</TeamPictures>
       </Team>
     </Layout>
   );
