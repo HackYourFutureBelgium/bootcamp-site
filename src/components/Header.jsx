@@ -61,10 +61,35 @@ const NavItems = styled.ul`
 const NavItem = styled.li`
   color: ${colors.darkPurple};
   margin-left: 5.6rem;
+  position: relative;
+  &:not(.nav__cta):after {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0.3rem;
+    background: ${colors.orange};
+    content: '';
+    opacity: 0;
+    transition: all 0.3s;
+  }
+
+  &:not(.nav__cta):after {
+    bottom: -1rem;
+    transform: translateY(-1rem);
+  }
+
+  &:not(.nav__cta):hover:after {
+    opacity: 1;
+    transform: translateY(0);
+  }
   @media (max-width: 830px) {
     text-align: center;
     padding: 1rem;
     margin-left: 0;
+    &:not(.nav__cta):after {
+      bottom: 0.6rem;
+      transform: translateY(-0.8rem);
+    }
   }
 `;
 
@@ -139,7 +164,7 @@ const Header = () => {
           <NavItem>
             <Link to="/contact">Contact</Link>
           </NavItem>
-          <NavItem>
+          <NavItem className="nav__cta">
             <Link to="/partners">
               <Button big={headerIsAtTop}>Apply now</Button>
             </Link>
