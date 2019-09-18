@@ -26,7 +26,7 @@ const HeaderStyle = styled.header`
   animation-name: ${props =>
     !props.isAtTop &&
     css`
-      ${animations.slideDown}
+      ${animations.slideHeaderDown}
     `};
 `;
 
@@ -48,11 +48,12 @@ const NavItems = styled.ul`
     right: -5rem;
     padding: 1rem;
     background-color: ${colors.offWhite};
-    animation-duration: ${transitionTimes.headerOnScroll * 2}ms;
+    animation-duration: ${transitionTimes.slideNav}ms;
     animation-name: ${props => css`
-      ${props.isShown ? animations.slideDown : animations.slideUp}
+      ${props.isShown ? animations.slideNavDown : animations.slideNavUp}
     `};
     animation-fill-mode: forwards;
+    transform-origin: bottom;
     z-index: 20;
   }
 `;

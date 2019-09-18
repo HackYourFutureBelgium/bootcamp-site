@@ -2,11 +2,12 @@ import { keyframes } from 'styled-components';
 
 // expressed in ms
 const transitionTimes = {
-  headerOnScroll: 300
+  headerOnScroll: 300,
+  slideNav: 600
 };
 
 const animations = {
-  slideDown: keyframes`
+  slideHeaderDown: keyframes`
     0% {
         opacity: 0.7;
         transform: translateY(-100%);
@@ -16,16 +17,26 @@ const animations = {
         transform: translateY(0);
     }
   `,
-  slideUp: keyframes`
+  slideNavDown: keyframes`
     0% {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 0.7;
+        transform: translateY(-100%);
     }
     100% {
-      opacity: 0.7;
-      transform: translateY(-100%);
+        opacity: 1;
+        transform: translateY(0);
     }
-  `
+  `,
+  slideNavUp: keyframes`
+    0% {
+        opacity: 0.7;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-100%);
+    }
+    `
 };
 
 const fonts = {
