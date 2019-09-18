@@ -1,6 +1,21 @@
-const transitionTimes = {};
+import { keyframes } from 'styled-components';
 
-const animations = {};
+// expressed in ms
+const transitionTimes = {
+  headerOnScroll: 300
+};
+
+const animations = {
+  slideDown: keyframes`
+    0% {
+        opacity: 0.7;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }`
+};
 
 const fonts = {
   copy: `'Karla', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;`,
@@ -28,7 +43,18 @@ const colors = {
   pink: '#F9DDD2'
 };
 
+// dimensions are expressed in rems
+// they're not strings so we can do calculations with them
 const dimensions = {
+  header: {
+    height: {
+      large: 11,
+      medium: 8
+    },
+    breakpoints: {
+      medium: 88
+    }
+  },
   footer: {
     height: 26
   },

@@ -17,6 +17,7 @@ const PageContainer = styled.div`
 const Main = styled.main`
   display: block;
   width: 100%;
+  padding-top: ${dimensions.header.height.large}rem;
 `;
 
 const FlexedMain = styled(Main)`
@@ -27,6 +28,7 @@ const FlexedMain = styled(Main)`
 
 const Layout = ({ flex, children }) => {
   const ContentWrapper = flex ? FlexedMain : Main;
+
   return (
     <>
       <GlobalStyle />
