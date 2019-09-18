@@ -14,7 +14,18 @@ const animations = {
     100% {
         opacity: 1;
         transform: translateY(0);
-    }`
+    }
+  `,
+  slideUp: keyframes`
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0.7;
+      transform: translateY(-100%);
+    }
+  `
 };
 
 const fonts = {
@@ -49,7 +60,7 @@ const dimensions = {
   header: {
     height: {
       large: 11,
-      medium: 8
+      small: 7
     },
     breakpoints: {
       medium: 88
