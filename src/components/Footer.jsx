@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import L from 'leaflet';
 import Img from 'gatsby-image';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
@@ -40,17 +39,20 @@ const StyledFooter = styled.footer`
   }
 `;
 
-const MapContainer = styled.div`
+const InfoContainer = styled.div`
   height: 100%;
   display: flex;
 `;
 
-const StyledMap = styled(Map)`
+const MapContainer = styled.div`
   width: 40rem;
   height: 100%;
   margin-right: 2.5rem;
   @media (max-width: 1080px) {
     display: none;
+  }
+  .leaflet-container {
+    height: 100%;
   }
 `;
 
@@ -141,29 +143,41 @@ const Footer = () => {
 
   const position = [50.8455124, 4.3574726];
 
-  const icon = new L.Icon({
-    iconUrl: markerIcon,
-    iconRetinaUrl: markerIcon,
-    iconAnchor: [14, 21],
-    popupAnchor: [0, 0],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    iconSize: new L.Point(28, 42)
-  });
-
   return (
     <StyledFooter>
-      <MapContainer>
-        <StyledMap center={position} zoom={15}>
-          <TileLayer
-            url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"
-            attribution={`&copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions" target="_blank">CARTO</a>`}
-          />
-          <Marker position={position} icon={icon}>
-            <Popup>BeCentral</Popup>
-          </Marker>
-        </StyledMap>
+      <InfoContainer>
+        <MapContainer>
+          {/* necessary for server-side rendering leaflet */}
+          {typeof window !== 'undefined' ? (
+            <Map center={position} zoom={15}>
+              {(() => {
+                // eslint-disable-next-line global-require
+                const L = require('leaflet');
+                const icon = new L.Icon({
+                  iconUrl: markerIcon,
+                  iconRetinaUrl: markerIcon,
+                  iconAnchor: [14, 21],
+                  popupAnchor: [0, 0],
+                  shadowUrl: null,
+                  shadowSize: null,
+                  shadowAnchor: null,
+                  iconSize: [28, 42]
+                });
+                return (
+                  <>
+                    <TileLayer
+                      url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"
+                      attribution={`&copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions" target="_blank">CARTO</a>`}
+                    />
+                    <Marker position={position} icon={icon}>
+                      <Popup>BeCentral</Popup>
+                    </Marker>
+                  </>
+                );
+              })()}
+            </Map>
+          ) : null}
+        </MapContainer>
         <Details>
           <h5>HackYourFuture Belgium</h5>
           <ul>
@@ -185,7 +199,7 @@ const Footer = () => {
             </Facebook>
           </ul>
         </Details>
-      </MapContainer>
+      </InfoContainer>
       <StayInformed>
         <MailingSignup>
           <h5>Subscribe to our mailing list</h5>
