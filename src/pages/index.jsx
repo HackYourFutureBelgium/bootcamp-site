@@ -275,7 +275,7 @@ const IndexPage = () => {
   const $partners = partnerData.map(partner => <Partner key={partner.id} {...partner} />);
   return (
     <Layout flex>
-      <SEO title="Home" />
+      {/* <SEO title="Home" /> */}
       <HeaderImageContainer>
         <Img fluid={headerImage.childImageSharp.fluid} alt="Bootcamp atmosphere" />
       </HeaderImageContainer>
