@@ -40,20 +40,22 @@ const NavItems = styled.ul`
   display: flex;
   align-items: center;
   @media (max-width: 830px) {
+    margin: 0;
     flex-direction: column;
     display: ${props => (props.isShown || !props.transitionEnded ? 'flex' : 'none')};
     position: absolute;
-    width: 22rem;
-    top: ${props => (props.headerIsAtTop ? 7 : 5)}rem;
+    justify-content: space-evenly;
+    width: 20rem;
+    height: ${dimensions.nav.height}rem;
+    top: ${props => (props.headerIsAtTop ? 7.5 : 5.5)}rem;
     right: -5rem;
-    padding: 1rem;
     background-color: ${colors.offWhite};
     animation-duration: ${transitionTimes.slideNav}ms;
+    animation-fill-mode: forwards;
     animation-name: ${props => css`
       ${props.isShown ? animations.slideNavDown : animations.slideNavUp}
     `};
-    animation-fill-mode: forwards;
-    transform-origin: bottom;
+    transition: height ${transitionTimes.slideNav}ms;
     z-index: 20;
   }
 `;
@@ -84,11 +86,11 @@ const NavItem = styled.li`
   }
   @media (max-width: 830px) {
     text-align: center;
-    padding: 1rem;
+    padding: 1rem 0.4;
     margin-left: 0;
     &:not(.nav__cta):after {
-      bottom: 0.6rem;
-      transform: translateY(-0.8rem);
+      bottom: -0.5rem;
+      transform: translateY(-0.5rem);
     }
   }
 `;
@@ -107,6 +109,8 @@ const Header = () => {
   `);
 
   const header = useRef(null);
+  const nav = useRef(null);
+  const navButton = useRef(null);
 
   const [headerIsAtTop, setHeaderAtTop] = useState(true);
   const [mobileNavShown, setMobileNavState] = useState(false);
@@ -122,35 +126,50 @@ const Header = () => {
     setHeaderAtTop(headerAtTopAfterScroll);
   };
 
-  useEffect(() => {
-    document.addEventListener('scroll', handleScroll);
-    return () => {
-      document.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const toggleMobileNav = () => {
-    const isShown = !mobileNavShown;
+  const toggleMobileNav = (e, value = null) => {
+    const isShown = value !== null ? value : !mobileNavShown;
 
     if (!isShown) {
       setTransitionEnded(false);
       setTimeout(() => {
         setTransitionEnded(true);
-      }, transitionTimes.headerOnScroll * 2);
+      }, transitionTimes.slideNav * 2);
     }
     setMobileNavState(isShown);
   };
 
-  console.log(mobileNavShown);
+  // to get mobile nav state inside of a click event, nasty closures
+  const shownRef = useRef(mobileNavShown);
+  shownRef.current = mobileNavShown;
+  const handleClickOutsideNav = event => {
+    if (
+      shownRef.current &&
+      !nav.current.contains(event.target) &&
+      !navButton.current.contains(event.target)
+    ) {
+      toggleMobileNav(null, false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('scroll', handleScroll);
+    document.addEventListener('mousedown', handleClickOutsideNav);
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('mousedown', handleClickOutsideNav);
+    };
+  }, []);
+
   return (
     <HeaderStyle isAtTop={headerIsAtTop} ref={header}>
       <Img fixed={data.file.childImageSharp.fixed} />
       <Nav>
-        <Hamburger onClick={toggleMobileNav} />
+        <Hamburger ref={navButton} onClick={toggleMobileNav} active={mobileNavShown} />
         <NavItems
           transitionEnded={transitionEnded}
           isShown={mobileNavShown}
           headerIsAtTop={headerIsAtTop}
+          ref={nav}
         >
           <NavItem>
             <Link to="/projects">Our projects</Link>

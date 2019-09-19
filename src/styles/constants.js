@@ -3,40 +3,7 @@ import { keyframes } from 'styled-components';
 // expressed in ms
 const transitionTimes = {
   headerOnScroll: 300,
-  slideNav: 600
-};
-
-const animations = {
-  slideHeaderDown: keyframes`
-    0% {
-        opacity: 0.7;
-        transform: translateY(-100%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-  `,
-  slideNavDown: keyframes`
-    0% {
-        opacity: 0.7;
-        transform: translateY(-100%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-  `,
-  slideNavUp: keyframes`
-    0% {
-        opacity: 0.7;
-        transform: translateY(0);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(-100%);
-    }
-    `
+  slideNav: 400
 };
 
 const fonts = {
@@ -77,6 +44,9 @@ const dimensions = {
       medium: 88
     }
   },
+  nav: {
+    height: 28
+  },
   footer: {
     height: 26
   },
@@ -86,6 +56,38 @@ const dimensions = {
       medium: 32
     }
   }
+};
+
+const animations = {
+  slideHeaderDown: keyframes`
+    0% {
+        opacity: 0.7;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  `,
+  slideNavDown: keyframes`
+    0% {
+      opacity: 0.7;
+      height: 0;
+    }
+    100% {
+      opacity: 1;
+      height: ${dimensions.nav.height}rem;
+    }
+  `,
+  slideNavUp: keyframes`
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      height: 0;
+    }
+    `
 };
 
 export { transitionTimes, animations, colors, dimensions, fonts };

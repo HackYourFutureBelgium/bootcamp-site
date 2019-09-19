@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { colors } from '../../styles/constants';
+import { colors, transitionTimes } from '../../styles/constants';
 
 // source: https://codepen.io/mutedblues/pen/MmPNPG
 // modified to remove floats
@@ -12,7 +12,7 @@ const HamburgerButton = styled.button`
   .menu-icon {
     display: inline-block;
     cursor: pointer;
-    padding: 2rem 2rem;
+    padding: 1rem 1rem;
     position: relative;
     user-select: none;
   }
@@ -22,7 +22,7 @@ const HamburgerButton = styled.button`
     display: block;
     height: 0.2rem;
     position: relative;
-    transition: background 0.2s ease-out;
+    transition: background ${transitionTimes.slideNav / 2}ms ease-out;
     width: 2.4rem;
   }
 
@@ -33,7 +33,7 @@ const HamburgerButton = styled.button`
     display: block;
     height: 100%;
     position: absolute;
-    transition: all 0.2s ease-out;
+    transition: all ${transitionTimes.slideNav / 2}ms ease-out;
     width: 100%;
   }
 
@@ -77,18 +77,26 @@ const HamburgerButton = styled.button`
   }
 `;
 
-const Hamburger = ({ onClick, ...rest }) => (
-  <HamburgerButton {...rest}>
-    <input className="menu-btn" type="checkbox" id="menu-btn" onClick={onClick} />
+const Hamburger = forwardRef(({ onClick, active, ...rest }, ref) => (
+  <HamburgerButton ref={ref} {...rest}>
+    <input
+      className="menu-btn"
+      checked={active}
+      type="checkbox"
+      id="menu-btn"
+      onClick={onClick}
+      readOnly
+    />
     {/* eslint-disable-next-line */}
     <label className="menu-icon" htmlFor="menu-btn">
       <span className="navicon" />
     </label>
   </HamburgerButton>
-);
+));
 
 Hamburger.propTypes = {
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  active: PropTypes.bool.isRequired
 };
 
 export default Hamburger;
