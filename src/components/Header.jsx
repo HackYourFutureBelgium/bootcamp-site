@@ -21,7 +21,7 @@ const HeaderStyle = styled.header`
   left: 0;
   z-index: 10;
   box-shadow: 0 0 3px 1px rgba(81, 81, 81, 0.2);
-  animation-duration: ${transitionTimes.headerOnScroll * 2}ms;
+  animation-duration: ${transitionTimes.headerOnScroll}ms;
   transition: height ${transitionTimes.headerOnScroll}ms;
   animation-name: ${props =>
     !props.isAtTop &&

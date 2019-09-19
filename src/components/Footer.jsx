@@ -14,7 +14,7 @@ const StyledFooter = styled.footer`
   background-color: #fff;
   padding: 2.5rem 10%;
   width: 100%;
-  height: ${dimensions.footer.height}rem;
+  height: ${dimensions.footer.height.large}rem;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -22,6 +22,16 @@ const StyledFooter = styled.footer`
   box-shadow: 0 1px 6px 3px rgba(81, 81, 81, 0.2);
   display: flex;
   justify-content: space-between;
+  @media (min-width: 1081px) and (max-width: 1200px) {
+    padding: 2.5rem 5%;
+  }
+  @media (max-width: 720px) {
+    padding: 2.5rem 3rem;
+  }
+  @media (max-width: 600px) {
+    flex-direction: column;
+    height: ${dimensions.footer.height.small}rem;
+  }
   h5 {
     font-family: ${fonts.copy};
     font-size: 1.6rem;
@@ -39,6 +49,9 @@ const StyledMap = styled(Map)`
   width: 40rem;
   height: 100%;
   margin-right: 2.5rem;
+  @media (max-width: 1080px) {
+    display: none;
+  }
 `;
 
 const Details = styled.div`
@@ -107,6 +120,9 @@ const LogoContainer = styled.div`
   align-items: center;
   span {
     margin-right: 1rem;
+  }
+  @media (max-width: 600px) {
+    margin: 2rem;
   }
 `;
 

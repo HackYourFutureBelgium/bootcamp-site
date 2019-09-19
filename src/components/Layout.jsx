@@ -7,11 +7,14 @@ import GlobalStyle from '../styles';
 import { colors, dimensions } from '../styles/constants';
 
 const PageContainer = styled.div`
+  position: relative;
   width: 100%;
   min-height: 100%;
   background-color: ${colors.offWhite};
-  padding-bottom: calc(2rem + ${dimensions.footer.height}rem);
-  position: relative;
+  padding-bottom: calc(2rem + ${dimensions.footer.height.large}rem);
+  @media (max-width: 600px) {
+    padding-bottom: calc(2rem + ${dimensions.footer.height.small}rem);
+  }
 `;
 
 const Main = styled.main`

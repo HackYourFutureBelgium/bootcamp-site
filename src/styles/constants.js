@@ -2,8 +2,8 @@ import { keyframes } from 'styled-components';
 
 // expressed in ms
 const transitionTimes = {
-  headerOnScroll: 300,
-  slideNav: 400
+  headerOnScroll: 400,
+  slideNav: 300
 };
 
 const fonts = {
@@ -48,7 +48,10 @@ const dimensions = {
     height: 28
   },
   footer: {
-    height: 26
+    height: {
+      large: 26,
+      small: 48
+    }
   },
   card: {
     width: {
