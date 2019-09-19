@@ -36,18 +36,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
-        fonts: [
-          {
-            family: `Aleo`
-          },
-          {
-            family: `Karla`
-          }
-        ]
+        fonts: [{ family: `Aleo` }, { family: `Karla` }]
       }
     },
     {
       resolve: `gatsby-plugin-styled-components`,
+      options: {}
+    },
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
       options: {}
     }
   ]
