@@ -16,6 +16,7 @@ import partnerData from '../data/featured-partners.json';
 const HeaderImageContainer = styled.aside`
   align-self: flex-end;
   width: 65%;
+  max-width: 120rem;
   @media (max-width: 820px) {
     width: 100%;
   }
@@ -25,6 +26,9 @@ const HeaderCard = styled(Card)`
   position: absolute;
   top: 16vw;
   left: calc(50% - ${dimensions.card.width.large}rem);
+  @media (min-width: 1850px) {
+    top: 40vh;
+  }
   @media (max-width: 820px) {
     left: calc(50% - ${dimensions.card.width.large / 2}rem);
     top: 60vw;
@@ -40,11 +44,18 @@ const ValueWrapper = styled.div`
   background: #fff;
   width: 80%;
   margin-top: -12vw;
-  padding: 3rem;
   z-index: 1;
+  padding: 2rem;
   box-shadow: 0 0 4px 0px rgba(81, 81, 81, 0.5);
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 6fr auto;
+  column-gap: 2rem;
+  row-gap: 0.5rem;
+  place-items: center;
+  @media (min-width: 1500px) {
+    max-width: 100rem;
+  }
   @media (max-width: 820px) {
     position: static;
     width: 90%;
@@ -52,35 +63,34 @@ const ValueWrapper = styled.div`
     align-self: center;
     padding: 2rem;
   }
-  @media (max-width: 710px) {
-    flex-wrap: wrap;
+  @media (max-width: 700px) {
+    grid-template-columns: repeat(2, 0.8fr);
+    grid-template-rows: 14rem auto 14rem auto;
+    column-gap: 6rem;
+    row-gap: 0;
+    padding: 2rem 4rem 3rem;
   }
-  .values__wrapper {
-    width: 20%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    @media (max-width: 710px) {
-      width: 42%;
-      height: 46%;
-      margin-bottom: 2rem;
-      :last-of-type {
-        margin-bottom: 0;
+  @media (max-width: 450px) {
+    grid-template-rows: 10rem auto 10rem auto;
+  }
+  img {
+    max-width: 100%;
+  }
+  > div {
+    @media (max-width: 700px) {
+      &:nth-child(3),
+      &:nth-child(4) {
+        grid-row: 3/4;
       }
     }
-  }
-  .values__wrapper > div {
-    display: flex;
-    align-content: center;
-    height: 65%;
+    @media (max-width: 400px) {
+      transform: scale(1.6, 1.6);
+    }
   }
   p {
+    align-self: start;
     text-align: center;
-    vertical-align: text-top;
-    height: 35%;
-    margin-top: 0;
+    margin: 0 0 1rem;
   }
   .values__rocket {
     width: 40%;
@@ -150,7 +160,7 @@ const DottedGraphicApply = styled(DottedGraphic)`
   left: 60%;
   top: 11.5rem;
   z-index: 0;
-  @media (max-width: 1000px) {
+  @media (max-width: 1040px) {
     display: none;
   }
 `;
@@ -288,39 +298,30 @@ const IndexPage = () => {
       </HeaderCard>
       <ValueWrapper>
         {/* Leave alt tags blank, we want these illustrations to be skipped by screen readers */}
-        <div className="values__wrapper">
-          <div className="values__rocket">
-            <img src={rocketIcon} alt="" role="presentation" />
-          </div>
-          <p>
-            <Highlight>4-week</Highlight> intensive bootcamp for refugees
-          </p>
+        <div className="values__rocket">
+          <img src={rocketIcon} alt="" role="presentation" />
         </div>
-        <div className="values__wrapper">
-          <div className="values__editor">
-            <img src={codeEditorIcon} alt="" role="presentation" />
-          </div>
-          <p>
-            Coaching given by <Highlight>IT-experts</Highlight>
-          </p>
+        <div className="values__editor">
+          <img src={codeEditorIcon} alt="" role="presentation" />
         </div>
-        <div className="values__wrapper">
-          <div className="values__people">
-            <img src={peopleIcon} alt="" role="presentation" />
-          </div>
-
-          <p>
-            open source projects with a <Highlight>positive impact</Highlight>
-          </p>
+        <div className="values__people">
+          <img src={peopleIcon} alt="" role="presentation" />
         </div>
-        <div className="values__wrapper">
-          <div className="values__arm">
-            <img src={armIcon} alt="" role="presentation" />
-          </div>
-          <p>
-            career starter for the <Highlight>Belgian IT industry</Highlight>
-          </p>
+        <div className="values__arm">
+          <img src={armIcon} alt="" role="presentation" />
         </div>
+        <p>
+          <Highlight>4-week</Highlight> intensive bootcamp for refugees
+        </p>
+        <p>
+          Coaching given by <Highlight>IT-experts</Highlight>
+        </p>
+        <p>
+          open source projects with a <Highlight>positive impact</Highlight>
+        </p>
+        <p>
+          career starter for the <Highlight>Belgian IT industry</Highlight>
+        </p>
       </ValueWrapper>
       <WhoCanApply>
         <GroupImageContainer>
