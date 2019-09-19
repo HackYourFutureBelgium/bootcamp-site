@@ -43,6 +43,7 @@ const NavItems = styled.ul`
     margin: 0;
     flex-direction: column;
     display: ${props => (props.isShown || !props.transitionEnded ? 'flex' : 'none')};
+    pointer-events: ${props => (!props.transitionEnded ? 'none' : 'auto')};
     position: absolute;
     justify-content: space-evenly;
     width: 20rem;
