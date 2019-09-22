@@ -29,7 +29,7 @@ const FlexedMain = styled(Main)`
   flex-flow: column;
 `;
 
-const Layout = ({ flex, children }) => {
+const Layout = ({ flex, children, ...rest }) => {
   const ContentWrapper = flex ? FlexedMain : Main;
 
   return (
@@ -37,7 +37,9 @@ const Layout = ({ flex, children }) => {
       <GlobalStyle />
       <PageContainer>
         <Header />
-        <ContentWrapper flex={flex}>{children}</ContentWrapper>
+        <ContentWrapper {...rest} flex={flex}>
+          {children}
+        </ContentWrapper>
         <Footer />
       </PageContainer>
     </>
