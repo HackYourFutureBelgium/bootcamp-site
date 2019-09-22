@@ -11,7 +11,7 @@ import 'leaflet/dist/leaflet.css';
 
 const StyledFooter = styled.footer`
   background-color: #fff;
-  padding: 2.5rem 10%;
+  padding: 3.2rem 10% 2.5rem;
   width: 100%;
   height: ${dimensions.footer.height.large}rem;
   position: absolute;

@@ -28,9 +28,9 @@ DottedGraphic.defaultProps = {
   color: colors.pink,
   amountWide: 10,
   amountHigh: 6,
-  spacingX: 42,
-  spacingY: 36,
-  radius: 4
+  spacingX: 38,
+  spacingY: 32,
+  radius: 3
 };
 
 DottedGraphic.propTypes = {
