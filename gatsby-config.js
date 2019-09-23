@@ -39,17 +39,9 @@ module.exports = {
         fonts: [{ family: `Aleo` }, { family: `Karla` }]
       }
     },
-    {
-      resolve: `gatsby-plugin-styled-components`,
-      options: {}
-    },
-    {
-      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
-      options: {}
-    },
-    {
-      resolve: 'gatsby-plugin-brotli',
-      options: {}
-    }
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-webpack-bundle-analyser-v2',
+    'gatsby-plugin-brotli',
+    'gatsby-plugin-netlify-cms'
   ]
 };
