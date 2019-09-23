@@ -51,9 +51,18 @@ const CTA = styled.p`
   }
 `;
 
-const ProjectSection = styled.div``;
+const ProjectSection = styled(Tabbable)`
+  width: 100%;
+`;
 
-const TabbedHeader = styled.div``;
+const Tabs = styled.div`
+  display: flex;
+`;
+
+const ProjectsForYear = styled(Panel)`
+  background: #fff;
+  padding: 4rem;
+`;
 
 const Projects = () => {
   const data = useStaticQuery(graphql`
@@ -94,15 +103,15 @@ const Projects = () => {
         </ImageContainer>
       </IntroContainer>
       <ProjectSection>
-        <Tabbable>
-          <div>
-            <Tab>Tab One</Tab>
-            <Tab>Tab Two</Tab>
-          </div>
+        <Tabs>
+          <Tab>Tab One</Tab>
+          <Tab>Tab Two</Tab>
+          <Tab>Tab Three</Tab>
+        </Tabs>
 
-          <Panel>Panel 1</Panel>
-          <Panel>Panel 2</Panel>
-        </Tabbable>
+        <ProjectsForYear>Panel 1</ProjectsForYear>
+        <ProjectsForYear>Panel 2</ProjectsForYear>
+        <ProjectsForYear>Panel 3</ProjectsForYear>
       </ProjectSection>
     </Layout>
   );

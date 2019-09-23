@@ -7,7 +7,10 @@ import styled from 'styled-components';
 import { usePanels } from '../../hooks';
 // import { colors } from '../../styles/constants';
 
-const StyledPanel = styled.div``;
+const StyledPanel = styled.article`
+  position: relative;
+  z-index: 2;
+`;
 
 const Panel = ({ children, ...rest }) => {
   const isActive = usePanels();
