@@ -163,7 +163,9 @@ const Header = () => {
 
   return (
     <HeaderStyle isAtTop={headerIsAtTop} ref={header}>
-      <Img fixed={data.file.childImageSharp.fixed} />
+      <Link to="/">
+        <Img fixed={data.file.childImageSharp.fixed} fadeIn={false} loading="eager" />
+      </Link>
       <Nav>
         <Hamburger ref={navButton} onClick={toggleMobileNav} active={mobileNavShown} />
         <NavItems
