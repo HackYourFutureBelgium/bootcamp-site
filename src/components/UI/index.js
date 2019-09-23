@@ -4,3 +4,6 @@ export { default as Card } from './Card';
 export { default as ExternalLink } from './ExternalLink';
 export { default as DottedGraphic } from './DottedGraphic';
 export { default as Hamburger } from './Hamburger';
+export { default as Panel } from './Panel';
+export { default as Tab } from './Tab';
+export { default as Tabbable } from './Tabbable';
