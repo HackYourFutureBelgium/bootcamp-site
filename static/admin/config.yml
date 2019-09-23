@@ -1,0 +1,16 @@
+backend:
+  name: github
+  repo: HackYourFutureBelgium/bootcamp-site
+media_folder: static/assets
+public_folder: assets
+site_url: https://hyf-bootcamp.netlify.com
+collections:
+  - name: projects
+    label: Project
+    folder: src/data/projects
+    identifier_field: name
+    create: true
+    fields:
+      - { name: name, label: Name, widget: string }
+      - { name: date, label: Date, widget: datetime }
+      - { name: description, label: Description, widget: text }
