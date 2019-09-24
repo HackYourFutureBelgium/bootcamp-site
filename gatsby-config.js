@@ -1,3 +1,16 @@
+/*
+  Add/update/remove types declared in the netlify cms in the below array
+  The name of the resource === the name of the cms field
+  See /static/admin/config.yml
+*/
+const dataFilesystemSources = ['person', 'project'].map(resource => ({
+  resolve: 'gatsby-source-filesystem',
+  options: {
+    name: resource,
+    path: `${__dirname}/src/cms/${resource}`
+  }
+}));
+
 module.exports = {
   siteMetadata: {
     title: `HackYourFuture Bootcamp`,
@@ -16,6 +29,8 @@ module.exports = {
         path: `${__dirname}/src/images`
       }
     },
+    'gatsby-transformer-json',
+    ...dataFilesystemSources,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
