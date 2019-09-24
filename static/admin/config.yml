@@ -1,16 +1,63 @@
+#backend:
+#name: github
+#repo: HackYourFutureBelgium/bootcamp-site
 backend:
-  name: github
-  repo: HackYourFutureBelgium/bootcamp-site
+  name: test-repo
 media_folder: static/assets
 public_folder: assets
 site_url: https://hyf-bootcamp.netlify.com
 collections:
-  - name: projects
+  - name: project
     label: Project
-    folder: src/data/projects
+    folder: src/cms/project
     identifier_field: name
     create: true
     fields:
       - { name: name, label: Name, widget: string }
-      - { name: date, label: Date, widget: datetime }
+      - { name: date, label: Date, widget: datetime, format: 'MM/DD/YYYY' }
       - { name: description, label: Description, widget: text }
+  - name: person
+    label: Person
+    folder: src/cms/person
+    slug: '{{firstName}}-{{lastName}}-{{id}}'
+    summary: '{{fields.firstName}}-{{fields.lastName}}-{{fields.id}}'
+    identifier_field: id
+    create: true
+    fields:
+      - { name: firstName, label: First name, widget: string }
+      - { name: lastName, label: Last name, widget: string }
+      - { name: role, label: Role, widget: string }
+      - {
+          name: tags,
+          label: Tags,
+          widget: list,
+          required: false,
+          field: { name: tag, label: Tags, widget: string },
+        }
+      - {
+          name: linkedIn,
+          label: LinkedIn,
+          widget: string,
+          hint: 'Must be full URL to LinkedIn profile',
+          required: false,
+        }
+      - {
+          name: twitter,
+          label: Twitter,
+          widget: string,
+          hint: 'Must be full URL to Twitter profile',
+          required: false,
+        }
+      - {
+          name: github,
+          label: Github,
+          widget: string,
+          hint: 'Must be full URL to GitHub profile',
+          required: false,
+        }
+      - { name: email, label: Email, widget: string, required: false }
+      - {
+          name: id,
+          widget: uuid,
+          hint: "For information. This value is not displayed and doesn't have to be changed.",
+        }
