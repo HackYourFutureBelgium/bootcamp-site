@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'uuid/v4';
 import CMS from 'netlify-cms-app';
+import cloudinary from 'netlify-cms-media-library-cloudinary';
 
 /* eslint-disable react/require-default-props */
 // see https://github.com/netlify/netlify-cms/issues/1407
@@ -36,3 +37,5 @@ CMS.registerWidget(
     }
   }
 );
+
+CMS.registerMediaLibrary(cloudinary);

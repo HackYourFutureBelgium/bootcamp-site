@@ -1,10 +1,17 @@
-#backend:
-#name: github
-#repo: HackYourFutureBelgium/bootcamp-site
 backend:
-  name: test-repo
-media_folder: static/assets
-public_folder: assets
+  name: github
+  repo: HackYourFutureBelgium/bootcamp-site
+#backend:
+#name: test-repo
+media_folder: static/images/uploads
+public_folder: '/images/uploads'
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: open-knowledge-belgium
+    api_key: 514369577986481
+    use_transformations: true
+    use_secure_url: false
 site_url: https://hyf-bootcamp.netlify.com
 collections:
   - name: project
@@ -24,6 +31,20 @@ collections:
     identifier_field: id
     create: true
     fields:
+      - name: picture
+        label: Picture
+        allow_multiple: false
+        widget: image
+        hint: "Make sure the picture is square (width=height). It will automatically be cropped/resized to 400x400, and a grayscale effect will be applied. You don't have to add this effect yoruself."
+        media_library:
+          config:
+            default_transformations:
+              - - fetch_format: auto
+                  width: 400
+                  height: 400
+                  quality: 80
+                  crop: fill
+                  effect: grayscale
       - { name: firstName, label: First name, widget: string }
       - { name: lastName, label: Last name, widget: string }
       - { name: role, label: Role, widget: string }
@@ -33,6 +54,7 @@ collections:
           widget: list,
           required: false,
           field: { name: tag, label: Tags, widget: string },
+          hint: What is this person's specialty?,
         }
       - {
           name: linkedIn,
@@ -60,4 +82,11 @@ collections:
           name: id,
           widget: uuid,
           hint: "For information. This value is not displayed and doesn't have to be changed.",
+        }
+      - {
+          name: isTeamMember,
+          label: Is a team member,
+          widget: boolean,
+          default: false,
+          hint: Enable if this person should be shown as a team member on the main page,
         }
