@@ -54,14 +54,15 @@ module.exports = {
         fonts: [{ family: `Aleo` }, { family: `Karla` }]
       }
     },
+    'gatsby-plugin-react-leaflet',
     'gatsby-plugin-styled-components',
-    'gatsby-plugin-webpack-bundle-analyser-v2',
     'gatsby-plugin-brotli',
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
         modulePath: `${__dirname}/src/cms/cms.jsx`
       }
-    }
+    },
+    'gatsby-plugin-webpack-bundle-analyser-v2'
   ]
 };
