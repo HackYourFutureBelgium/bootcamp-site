@@ -45,7 +45,7 @@ collections:
               - - fetch_format: auto
                   width: 400
                   height: 400
-                  quality: 80
+                  quality: 90
                   crop: fill
                   effect: grayscale
       - { name: firstName, label: First name, widget: string }
