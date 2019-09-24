@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import unorm from 'unorm';
-import HeadshotImg from './HeadshotImg';
 import ExternalLink from './UI/ExternalLink';
 import { colors, fonts } from '../styles/constants';
 import { linkedInIcon, twitterIconWhite, emailIconWhite } from '../images/icons';
@@ -23,11 +21,10 @@ const Card = styled.div`
 
 const HeadshotContainer = styled.div`
   width: 100%;
-`;
-
-const Headshot = styled(HeadshotImg)`
-  border-radius: 50%;
-  max-width: 100%;
+  img {
+    border-radius: 50%;
+    max-width: 100%;
+  }
 `;
 
 const Socials = styled.article`
@@ -53,18 +50,21 @@ const SocialLink = styled(ExternalLink)`
   }
 `;
 
-const HeadshotCard = ({ firstName, lastName, role, twitter, linkedIn, email, ...rest }) => {
-  // remove all accents and diatrics from a string
-  const normalize = str => {
-    const combining = /[\u0300-\u036F]/g;
-    return unorm.nfkd(str).replace(combining, '');
-  };
-
+const HeadshotCard = ({
+  firstName,
+  lastName,
+  role,
+  twitter,
+  linkedIn,
+  email,
+  picture,
+  ...rest
+}) => {
   const fullName = `${firstName} ${lastName}`;
   return (
     <Card {...rest}>
       <HeadshotContainer>
-        <Headshot src={`${normalize(firstName)}-${normalize(lastName)}.jpg`} name={fullName} />
+        <img src={picture} alt={fullName} />
       </HeadshotContainer>
       <h4>
         <strong>{fullName}</strong>
@@ -98,13 +98,13 @@ HeadshotCard.defaultProps = {
 };
 
 HeadshotCard.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   lastName: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
   twitter: PropTypes.string,
   linkedIn: PropTypes.string,
-  email: PropTypes.string
+  email: PropTypes.string,
+  picture: PropTypes.string.isRequired
 };
 
 export default HeadshotCard;

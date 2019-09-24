@@ -7,6 +7,7 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import { ExternalLink, Tab, Panel, Tabbable } from '../components/UI';
 import { colors } from '../styles/constants';
+import { flattenQueriedJson } from '../util';
 
 const IntroContainer = styled.section`
   width: 100%;
@@ -38,7 +39,7 @@ const IntroContent = styled.div`
 
 const ImageContainer = styled.div`
   width: 40%;
-  max-width: 60rem;
+  max-width: 50rem;
   @media (max-width: 800px) {
     display: none;
   }
@@ -65,18 +66,38 @@ const ProjectsForYear = styled(Panel)`
 `;
 
 const Projects = () => {
-  const data = useStaticQuery(graphql`
+  const { introImage, projectJson } = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "ibrahim.jpg" }) {
+      introImage: file(relativePath: { eq: "ibrahim.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 600, quality: 80) {
+          fluid(maxWidth: 500, quality: 80) {
             ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      projectJson: allPersonJson {
+        edges {
+          node {
+            name
           }
         }
       }
     }
   `);
 
+  const projects = flattenQueriedJson(projectJson);
+
+  const renderTabs = () => {
+    return <Tab>Tab</Tab>;
+  };
+
+  const renderProjects = () => {
+    return <ProjectsForYear>Projects</ProjectsForYear>;
+  };
+
+  // TODO dynamically render projects
+  const $tabs = [].map(renderTabs);
+  const $projects = [].map(renderProjects);
   return (
     <Layout>
       {/* <SEO title="Our projects" /> */}
@@ -99,19 +120,13 @@ const Projects = () => {
           </CTA>
         </IntroContent>
         <ImageContainer>
-          <Img fluid={data.file.childImageSharp.fluid} />
+          <Img fluid={introImage.childImageSharp.fluid} />
         </ImageContainer>
       </IntroContainer>
       <ProjectSection>
-        <Tabs>
-          <Tab>Tab One</Tab>
-          <Tab>Tab Two</Tab>
-          <Tab>Tab Three</Tab>
-        </Tabs>
+        <Tabs>{$tabs}</Tabs>
 
-        <ProjectsForYear>Panel 1</ProjectsForYear>
-        <ProjectsForYear>Panel 2</ProjectsForYear>
-        <ProjectsForYear>Panel 3</ProjectsForYear>
+        {$projects}
       </ProjectSection>
     </Layout>
   );

@@ -2,16 +2,17 @@ import React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-import { dimensions } from '../styles/constants';
-import { Highlight, Card, Button, ExternalLink, DottedGraphic } from '../components/UI';
-import Layout from '../components/Layout';
+
 import SEO from '../components/SEO';
+import Layout from '../components/Layout';
 import HeadshotCard from '../components/HeadshotCard';
 import QuoteCard from '../components/QuoteCard';
 import PartnerLink from '../components/Partner';
-import { rocketIcon, codeEditorIcon, peopleIcon, armIcon } from '../images/icons';
-import teamData from '../data/team.json';
 import partnerData from '../data/featured-partners.json';
+import { dimensions } from '../styles/constants';
+import { Highlight, Card, Button, ExternalLink, DottedGraphic } from '../components/UI';
+import { rocketIcon, codeEditorIcon, peopleIcon, armIcon } from '../images/icons';
+import { flattenQueriedJson } from '../util';
 
 const HeaderImageContainer = styled.aside`
   align-self: flex-end;
@@ -255,7 +256,7 @@ const Headshot = styled(HeadshotCard)`
 `;
 
 const IndexPage = () => {
-  const { headerImage, groupImage, bert } = useStaticQuery(graphql`
+  const { headerImage, groupImage, bert, teamJson } = useStaticQuery(graphql`
     query {
       headerImage: file(relativePath: { eq: "home-group-color.jpg" }) {
         childImageSharp {
@@ -278,10 +279,27 @@ const IndexPage = () => {
           }
         }
       }
+      teamJson: allPersonJson(filter: { isTeamMember: { eq: true } }) {
+        edges {
+          node {
+            id
+            picture
+            firstName
+            lastName
+            role
+            linkedIn
+            twitter
+            github
+            email
+          }
+        }
+      }
     }
   `);
 
-  const $teamMembers = teamData.map(member => <Headshot key={member.id} {...member} />);
+  const team = flattenQueriedJson(teamJson);
+
+  const $teamMembers = team.map(member => <Headshot key={member.id} {...member} />);
   const $partners = partnerData.map(partner => <Partner key={partner.id} {...partner} />);
   return (
     <Layout flex>
