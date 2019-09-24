@@ -16,8 +16,10 @@ site_url: https://hyf-bootcamp.netlify.com
 collections:
   - name: project
     label: Project
+    format: json
     folder: src/cms/project
     identifier_field: name
+    slug: '{{name}}-{{date}}'
     create: true
     fields:
       - { name: name, label: Name, widget: string }
@@ -25,9 +27,10 @@ collections:
       - { name: description, label: Description, widget: text }
   - name: person
     label: Person
+    format: json
     folder: src/cms/person
     slug: '{{firstName}}-{{lastName}}-{{id}}'
-    summary: '{{fields.firstName}}-{{fields.lastName}}-{{fields.id}}'
+    summary: '{{fields.firstName}} {{fields.lastName}}'
     identifier_field: id
     create: true
     fields:
