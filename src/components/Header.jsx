@@ -99,7 +99,7 @@ const NavItem = styled.li`
 const Header = () => {
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "logo/bootcamp-subtitled.png" }) {
+      file(relativePath: { eq: "logo/bootcamp-vertical.png" }) {
         childImageSharp {
           fixed(width: 90, quality: 100) {
             ...GatsbyImageSharpFixed
