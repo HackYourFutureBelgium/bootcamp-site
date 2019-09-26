@@ -49,10 +49,20 @@ collections:
           label: Team,
           widget: relation,
           collection: person,
+          displayFields: ['firstName', 'lastName', 'email'],
           searchFields: ['firstName', 'lastName', 'email'],
           valueField: id,
           multiple: true,
           hint: 'All people who collaborated on this project, including coaches. You will have to add a "Person" for them to show up in this list. The order people are in here, will be the same on the website.',
+        }
+      - {
+          name: partners,
+          label: Partners,
+          widget: relation,
+          collection: partner,
+          searchFields: ['name'],
+          valueField: name,
+          multiple: true,
         }
   - name: person
     label: Person
