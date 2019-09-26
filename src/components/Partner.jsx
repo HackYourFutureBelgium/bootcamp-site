@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import PartnerImg from './PartnerImg';
 import ExternalLink from './UI/ExternalLink';
 
 const PartnerLink = styled(ExternalLink)`
   text-align: center;
 `;
 
-const PartnerImage = styled(PartnerImg)`
+const PartnerImage = styled.img`
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   max-width: 100%;
@@ -18,14 +17,14 @@ const PartnerImage = styled(PartnerImg)`
   }
 `;
 
-const Partner = ({ name, img, website, ...rest }) => (
+const Partner = ({ name, logo, website, ...rest }) => (
   <PartnerLink href={website} {...rest}>
-    <PartnerImage src={img} name={`${name} logo`} />
+    <PartnerImage src={logo} alt={`${name} logo`} />
   </PartnerLink>
 );
 
 Partner.propTypes = {
-  img: PropTypes.string.isRequired,
+  logo: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   website: PropTypes.string.isRequired
 };

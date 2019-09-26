@@ -3,7 +3,7 @@
   The name of the resource === the name of the cms field
   See /static/admin/config.yml
 */
-const dataFilesystemSources = ['person', 'project'].map(resource => ({
+const dataFilesystemSources = ['person', 'project', 'partner'].map(resource => ({
   resolve: 'gatsby-source-filesystem',
   options: {
     name: resource,

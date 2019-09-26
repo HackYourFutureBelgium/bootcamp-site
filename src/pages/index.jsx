@@ -8,7 +8,6 @@ import Layout from '../components/Layout';
 import HeadshotCard from '../components/HeadshotCard';
 import QuoteCard from '../components/QuoteCard';
 import PartnerLink from '../components/Partner';
-import partnerData from '../data/featured-partners.json';
 import { dimensions } from '../styles/constants';
 import { Highlight, Card, Button, ExternalLink, DottedGraphic } from '../components/UI';
 import { rocketIcon, codeEditorIcon, peopleIcon, armIcon } from '../images/icons';
@@ -184,7 +183,7 @@ const Partners = styled.div`
   flex-direction: column;
   width: 50%;
   h2 {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
   }
   @media (max-width: 1150px) {
     width: 100%;
@@ -256,7 +255,7 @@ const Headshot = styled(HeadshotCard)`
 `;
 
 const IndexPage = () => {
-  const { headerImage, groupImage, bert, teamJson } = useStaticQuery(graphql`
+  const { headerImage, groupImage, bert, teamData, partnerData } = useStaticQuery(graphql`
     query {
       headerImage: file(relativePath: { eq: "home-group-color.jpg" }) {
         childImageSharp {
@@ -279,7 +278,7 @@ const IndexPage = () => {
           }
         }
       }
-      teamJson: allPersonJson(filter: { isTeamMember: { eq: true } }) {
+      teamData: allPersonJson(filter: { isTeamMember: { eq: true } }) {
         edges {
           node {
             id
@@ -294,13 +293,23 @@ const IndexPage = () => {
           }
         }
       }
+      partnerData: allPartnerJson(filter: { isFeatured: { eq: true } }) {
+        edges {
+          node {
+            logo
+            name
+            website
+          }
+        }
+      }
     }
   `);
 
-  const team = flattenQueriedJson(teamJson);
+  const team = flattenQueriedJson(teamData);
+  const partners = flattenQueriedJson(partnerData);
 
   const $teamMembers = team.map(member => <Headshot key={member.id} {...member} />);
-  const $partners = partnerData.map(partner => <Partner key={partner.id} {...partner} />);
+  const $partners = partners.map(partner => <Partner key={partner.name} {...partner} />);
   return (
     <Layout flex>
       {/* <SEO title="Home" /> */}
