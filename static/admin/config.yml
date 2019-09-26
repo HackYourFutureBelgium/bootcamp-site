@@ -139,7 +139,7 @@ collections:
               - - fetch_format: auto
                   height: 60
                   quality: 80
-                  crop: fill
+                  crop: pad
       - { name: name, label: Name, widget: string }
       - { name: website, label: Website, widget: string }
       - {
