@@ -122,3 +122,29 @@ collections:
           default: false,
           hint: Enable if this person should be shown as a team member on the main page,
         }
+  - name: partner
+    label: Partner
+    format: json
+    folder: src/cms/partner
+    identifier_field: name
+    create: true
+    fields:
+      - name: logo
+        label: Logo
+        allow_multiple: false
+        widget: image
+        media_library:
+          config:
+            default_transformations:
+              - - fetch_format: auto
+                  height: 60
+                  quality: 80
+                  crop: fill
+      - { name: name, label: Name, widget: string }
+      - { name: website, label: Website, widget: string }
+      - {
+          name: isFeatured,
+          label: Is on home page (partners we've worked with section),
+          widget: boolean,
+          default: true,
+        }
