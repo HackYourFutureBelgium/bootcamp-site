@@ -36,8 +36,15 @@ collections:
                   quality: 90
                   crop: fill
       - { name: name, label: Name, widget: string }
-      - { name: date, label: Date, widget: datetime, format: 'MM/DD/YYYY' }
-      - { name: description, label: Description, widget: text }
+      - {
+          name: date,
+          label: Date,
+          widget: datetime,
+          format: 'MM/YYYY',
+          dateFormat: true,
+          hint: 'Enter the start date of the bootcamp. The month and year are the only thing displayed on the website.',
+        }
+      - { name: description, label: Description, widget: markdown }
       - {
           name: github,
           label: GitHub,
@@ -89,7 +96,7 @@ collections:
                   effect: grayscale
       - { name: firstName, label: First name, widget: string }
       - { name: lastName, label: Last name, widget: string }
-      - { name: role, label: Role, widget: string }
+      - { name: role, label: Role, widget: string, default: Participant }
       - {
           name: tags,
           label: Tags,
