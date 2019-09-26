@@ -28,6 +28,9 @@ const HeaderStyle = styled.header`
     css`
       ${animations.slideHeaderDown}
     `};
+  .horizontal-image-container {
+    height: 5rem;
+  }
 `;
 
 const Nav = styled.nav`
@@ -97,11 +100,18 @@ const NavItem = styled.li`
 `;
 
 const Header = () => {
-  const data = useStaticQuery(graphql`
+  const { verticalLogo, horizontalLogo } = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "logo/bootcamp-vertical.png" }) {
+      verticalLogo: file(relativePath: { eq: "logo/bootcamp-vertical.png" }) {
         childImageSharp {
           fixed(width: 90, quality: 100) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      horizontalLogo: file(relativePath: { eq: "logo/bootcamp-horizontal.png" }) {
+        childImageSharp {
+          fixed(height: 48, quality: 100) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -161,11 +171,18 @@ const Header = () => {
     };
   }, []);
 
+  const $logoLink = headerIsAtTop ? (
+    <Link to="/">
+      <Img fixed={verticalLogo.childImageSharp.fixed} fadeIn={false} loading="eager" />
+    </Link>
+  ) : (
+    <Link to="/" className="horizontal-image-container">
+      <Img fixed={horizontalLogo.childImageSharp.fixed} fadeIn={false} loading="eager" />
+    </Link>
+  );
   return (
     <HeaderStyle isAtTop={headerIsAtTop} ref={header}>
-      <Link to="/">
-        <Img fixed={data.file.childImageSharp.fixed} fadeIn={false} loading="eager" />
-      </Link>
+      {$logoLink}
       <Nav>
         <Hamburger ref={navButton} onClick={toggleMobileNav} active={mobileNavShown} />
         <NavItems
