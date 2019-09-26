@@ -7,6 +7,8 @@ import { ExternalLink } from './UI';
 import { dimensions, fonts, colors } from '../styles/constants';
 import { markerIcon, twitterIcon, facebookIcon, emailIcon } from '../images/icons';
 
+import 'leaflet/dist/leaflet.css';
+
 const StyledFooter = styled.footer`
   background-color: #fff;
   padding: 3.2rem 10% 2.5rem;
