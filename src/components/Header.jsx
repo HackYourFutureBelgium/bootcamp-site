@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { Link } from 'gatsby';
 import styled, { css } from 'styled-components';
+
+import verticalLogo from '../images/logo/bootcamp-vertical.svg';
+import horizontalLogo from '../images/logo/bootcamp-horizontal.svg';
 import { Button, Hamburger } from './UI';
 import { dimensions, colors, transitionTimes, animations } from '../styles/constants';
 
@@ -28,8 +30,17 @@ const HeaderStyle = styled.header`
     css`
       ${animations.slideHeaderDown}
     `};
+  .vertical-image-container {
+    height: 80%;
+    img {
+      height: 100%;
+    }
+  }
   .horizontal-image-container {
-    height: 5rem;
+    height: 70%;
+    img {
+      height: 100%;
+    }
   }
 `;
 
@@ -100,25 +111,6 @@ const NavItem = styled.li`
 `;
 
 const Header = () => {
-  const { verticalLogo, horizontalLogo } = useStaticQuery(graphql`
-    query {
-      verticalLogo: file(relativePath: { eq: "logo/bootcamp-vertical.png" }) {
-        childImageSharp {
-          fixed(width: 90, quality: 100) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      horizontalLogo: file(relativePath: { eq: "logo/bootcamp-horizontal.png" }) {
-        childImageSharp {
-          fixed(height: 48, quality: 100) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-    }
-  `);
-
   const header = useRef(null);
   const nav = useRef(null);
   const navButton = useRef(null);
@@ -172,12 +164,12 @@ const Header = () => {
   }, []);
 
   const $logoLink = headerIsAtTop ? (
-    <Link to="/">
-      <Img fixed={verticalLogo.childImageSharp.fixed} fadeIn={false} loading="eager" />
+    <Link to="/" className="vertical-image-container">
+      <img src={verticalLogo} alt="Bootcamp logo" />
     </Link>
   ) : (
     <Link to="/" className="horizontal-image-container">
-      <Img fixed={horizontalLogo.childImageSharp.fixed} fadeIn={false} loading="eager" />
+      <img src={horizontalLogo} alt="Bootcamp logo" />
     </Link>
   );
   return (

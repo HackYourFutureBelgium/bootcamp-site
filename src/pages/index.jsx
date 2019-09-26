@@ -299,6 +299,7 @@ const IndexPage = () => {
             logo
             name
             website
+            id
           }
         }
       }
@@ -308,8 +309,8 @@ const IndexPage = () => {
   const team = flattenQueriedJson(teamData);
   const partners = flattenQueriedJson(partnerData);
 
-  const $teamMembers = team.map(member => <Headshot key={member.id} {...member} />);
-  const $partners = partners.map(partner => <Partner key={partner.name} {...partner} />);
+  const $teamMembers = team.reverse().map(member => <Headshot key={member.id} {...member} />);
+  const $partners = partners.map(partner => <Partner key={partner.id} {...partner} />);
   return (
     <Layout flex>
       {/* <SEO title="Home" /> */}
