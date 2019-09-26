@@ -22,9 +22,38 @@ collections:
     slug: '{{name}}-{{date}}'
     create: true
     fields:
+      - name: crest
+        label: Crest
+        allow_multiple: false
+        widget: image
+        hint: 'Make sure the picture is square (width=height). It will automatically be cropped/resized to 400x400 and it will be rounded.'
+        media_library:
+          config:
+            default_transformations:
+              - - fetch_format: auto
+                  width: 400
+                  height: 400
+                  quality: 90
+                  crop: fill
       - { name: name, label: Name, widget: string }
       - { name: date, label: Date, widget: datetime, format: 'MM/DD/YYYY' }
       - { name: description, label: Description, widget: text }
+      - {
+          name: github,
+          label: GitHub,
+          widget: string,
+          hint: "The full link to the project's repository on GitHub",
+        }
+      - {
+          name: team,
+          label: Team,
+          widget: relation,
+          collection: person,
+          searchFields: ['firstName', 'lastName', 'email'],
+          valueField: id,
+          multiple: true,
+          hint: 'All people who collaborated on this project, including coaches. You will have to add a "Person" for them to show up in this list. The order people are in here, will be the same on the website.',
+        }
   - name: person
     label: Person
     format: json
@@ -38,7 +67,7 @@ collections:
         label: Picture
         allow_multiple: false
         widget: image
-        hint: "Make sure the picture is square (width=height). It will automatically be cropped/resized to 400x400, and a grayscale effect will be applied. You don't have to add this effect yoruself."
+        hint: "Make sure the picture is square (width=height). It will automatically be cropped/resized to 400x400, and a grayscale effect will be applied. You don't have to add this or the rounded effect yoruself."
         media_library:
           config:
             default_transformations:

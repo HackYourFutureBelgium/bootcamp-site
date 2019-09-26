@@ -75,7 +75,7 @@ const Projects = () => {
           }
         }
       }
-      projectJson: allPersonJson {
+      projectJson: allProjectJson {
         edges {
           node {
             name
