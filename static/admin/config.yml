@@ -19,7 +19,7 @@ collections:
     format: json
     folder: src/cms/project
     identifier_field: name
-    slug: '{{name}}-{{date}}'
+    slug: '{{name}}-{{month}}-{{year}}'
     create: true
     fields:
       - name: crest
@@ -40,9 +40,9 @@ collections:
           name: date,
           label: Date,
           widget: datetime,
-          format: 'MM/YYYY',
-          dateFormat: true,
-          hint: 'Enter the start date of the bootcamp. The month and year are the only thing displayed on the website.',
+          format: 'YYYY-MM-DD',
+          dateFormat: 'MMMM YYYY',
+          timeFormat: false,
         }
       - { name: description, label: Description, widget: markdown }
       - {
