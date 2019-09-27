@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import slugify from 'slugify';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import { ExternalLink, Tab, Panel, Tabbable } from '../components/UI';
+import { ExternalLink, Tab, Panel, Tabbable, Button } from '../components/UI';
 import { colors } from '../styles/constants';
-import { flattenQueriedJson } from '../util';
+import { flattenQueriedJson, getMonthNameFromDate } from '../util';
 
 const IntroContainer = styled.section`
   width: 100%;
@@ -66,7 +67,7 @@ const ProjectsForYear = styled(Panel)`
 `;
 
 const Projects = () => {
-  const { introImage, projectJson } = useStaticQuery(graphql`
+  const { introImage, projectData, partnerData } = useStaticQuery(graphql`
     query {
       introImage: file(relativePath: { eq: "ibrahim.jpg" }) {
         childImageSharp {
@@ -75,29 +76,101 @@ const Projects = () => {
           }
         }
       }
-      projectJson: allProjectJson {
+      partnerData: allPartnerJson {
         edges {
           node {
+            logo
             name
+            website
+          }
+        }
+      }
+      projectData: allProjectJson {
+        edges {
+          node {
+            id
+            crest
+            name
+            date
+            description
+            partners
           }
         }
       }
     }
   `);
 
-  const projects = flattenQueriedJson(projectJson);
+  const partners = flattenQueriedJson(partnerData);
+  const projects = flattenQueriedJson(projectData);
 
-  const renderTabs = () => {
-    return <Tab>Tab</Tab>;
+  /*
+    - Extract momth and year
+    - Structure object by year
+    - Add month name as a project property
+    - Populate partner id array with logo, website and name
+  */
+  const populatedProjectsByYear = projects.reduce((byYear, project) => {
+    const date = new Date(project.date);
+    const year = date.getFullYear();
+    const monthNumber = `0${date.getMonth() + 1}`.slice(-2);
+
+    const populatedPartners = project.partners.reduce((populated, partner) => {
+      const partnerObj = partners.find(p => p.name === partner);
+      populated.push(partnerObj);
+      return populated;
+    }, []);
+
+    if (!byYear[year]) byYear[year] = [];
+    byYear[year].push({
+      ...project,
+      month: getMonthNameFromDate(date),
+      monthNumber,
+      partners: populatedPartners
+    });
+    return byYear;
+  }, {});
+
+  const renderTabs = year => <Tab key={`tab-${year}`}>{year}</Tab>;
+
+  const renderProjects = year => {
+    const $projects = populatedProjectsByYear[year].map(project => {
+      const { id, name, month, description, monthNumber } = project;
+      const $partners = project.partners.map(p => (
+        <ExternalLink key={`${id}-${p.name}`} href={p.website}>
+          <img src={p.logo} alt={`${p.name} logo`} />
+        </ExternalLink>
+      ));
+      const slug = slugify(name, { replacement: '-', lower: true });
+      return (
+        <article key={id}>
+          <h3>{name}</h3>
+          <span>
+            {month} {year}
+          </span>
+          <p>{description}</p>
+          <footer>
+            <div>
+              <h4>Partners</h4>
+              <div>{$partners}</div>
+            </div>
+            <Link to={`/projects/${year}/${monthNumber}/${slug}`}>
+              <Button inverted small>
+                More about the project &gt;
+              </Button>
+            </Link>
+          </footer>
+        </article>
+      );
+    });
+    return <ProjectsForYear key={`projects-${year}`}>{$projects}</ProjectsForYear>;
   };
 
-  const renderProjects = () => {
-    return <ProjectsForYear>Projects</ProjectsForYear>;
-  };
+  const $tabs = Object.keys(populatedProjectsByYear)
+    .reverse()
+    .map(renderTabs);
 
-  // TODO dynamically render projects
-  const $tabs = [].map(renderTabs);
-  const $projects = [].map(renderProjects);
+  const $projects = Object.keys(populatedProjectsByYear).map(renderProjects);
+
   return (
     <Layout>
       {/* <SEO title="Our projects" /> */}
@@ -125,7 +198,6 @@ const Projects = () => {
       </IntroContainer>
       <ProjectSection>
         <Tabs>{$tabs}</Tabs>
-
         {$projects}
       </ProjectSection>
     </Layout>
