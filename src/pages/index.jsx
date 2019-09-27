@@ -23,18 +23,20 @@ const HeaderImageContainer = styled.aside`
 `;
 
 const HeaderCard = styled(Card)`
+  width: 40rem;
   position: absolute;
   top: 16vw;
-  left: calc(50% - ${dimensions.card.width.large}rem);
+  left: calc(50% - 40rem);
   @media (min-width: 1850px) {
     top: 40vh;
   }
   @media (max-width: 820px) {
-    left: calc(50% - ${dimensions.card.width.large / 2}rem);
+    left: calc(50% - 20rem);
     top: 60vw;
   }
   @media (max-width: 400px) {
-    left: calc(50% - ${dimensions.card.width.medium / 2}rem);
+    width: 32rem;
+    left: calc(50% - 16rem);
     top: 60vw;
   }
 `;

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { colors, dimensions } from '../../styles/constants';
 
 const StyledCard = styled.article`
-  width: ${dimensions.card.width.large}rem;
   background: #fff;
   padding: 2rem 3rem;
   ${props =>
@@ -17,9 +16,6 @@ const StyledCard = styled.article`
         border-right: 5px solid ${colors.pink};
         box-shadow: -2px 2px 4px 0px rgba(0, 0, 0, 0.2);
         `}
-  @media (max-width: 400px) {
-    width: ${dimensions.card.width.medium}rem;
-  }
 `;
 
 const Card = ({ children, ...rest }) => {

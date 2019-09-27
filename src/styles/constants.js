@@ -52,12 +52,6 @@ const dimensions = {
       large: 26,
       small: 48
     }
-  },
-  card: {
-    width: {
-      large: 40,
-      medium: 32
-    }
   }
 };
 
