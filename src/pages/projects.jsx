@@ -3,12 +3,16 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import Layout from '../components/Layout';
+import Container from '../components/Layout';
 import SEO from '../components/SEO';
 import { ExternalLink, Tab, Panel, Tabbable } from '../components/UI';
 import { colors } from '../styles/constants';
 import { flattenQueriedJson, getMonthNameFromDate } from '../util';
 import Project from '../components/ProjectCard';
+
+const Layout = styled(Container)`
+  padding-bottom: 4rem;
+`;
 
 const IntroContainer = styled.section`
   width: 100%;
@@ -150,13 +154,7 @@ const Projects = () => {
     const $projects = populatedProjectsByYear[year].map(project => (
       <Project key={project.id} year={year} {...project} />
     ));
-    return (
-      <ProjectsForYear key={`projects-${year}`}>
-        {$projects}
-        {$projects}
-        {$projects}
-      </ProjectsForYear>
-    );
+    return <ProjectsForYear key={`projects-${year}`}>{$projects}</ProjectsForYear>;
   };
 
   const $tabs = Object.keys(populatedProjectsByYear)
