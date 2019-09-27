@@ -7,3 +7,4 @@ export { default as Hamburger } from './Hamburger';
 export { default as Panel } from './Panel';
 export { default as Tab } from './Tab';
 export { default as Tabbable } from './Tabbable';
+export { default as TextTruncate } from './TextTruncate';
