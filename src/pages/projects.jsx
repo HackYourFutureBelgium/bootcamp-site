@@ -1,19 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
-import slugify from 'slugify';
-import { Link, useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import { ExternalLink, Tab, Panel, Tabbable, Button } from '../components/UI';
+import { ExternalLink, Tab, Panel, Tabbable } from '../components/UI';
 import { colors } from '../styles/constants';
 import { flattenQueriedJson, getMonthNameFromDate } from '../util';
+import Project from '../components/ProjectCard';
 
 const IntroContainer = styled.section`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 4rem;
   @media (max-width: 1100px) {
     align-items: center;
   }
@@ -59,11 +60,24 @@ const ProjectSection = styled(Tabbable)`
 
 const Tabs = styled.div`
   display: flex;
+  background-color: ${colors.offWhite};
 `;
 
 const ProjectsForYear = styled(Panel)`
-  background: #fff;
-  padding: 4rem;
+  background-color: ${colors.offWhite};
+  padding: 2rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(auto-fill, 1fr);
+  grid-gap: 3rem;
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+    grid-gap: 0;
+    grid-row-gap: 3rem;
+  }
+  @media (max-width: 600px) {
+    padding: 2rem;
+  }
 `;
 
 const Projects = () => {
@@ -133,36 +147,16 @@ const Projects = () => {
   const renderTabs = year => <Tab key={`tab-${year}`}>{year}</Tab>;
 
   const renderProjects = year => {
-    const $projects = populatedProjectsByYear[year].map(project => {
-      const { id, name, month, description, monthNumber } = project;
-      const $partners = project.partners.map(p => (
-        <ExternalLink key={`${id}-${p.name}`} href={p.website}>
-          <img src={p.logo} alt={`${p.name} logo`} />
-        </ExternalLink>
-      ));
-      const slug = slugify(name, { replacement: '-', lower: true });
-      return (
-        <article key={id}>
-          <h3>{name}</h3>
-          <span>
-            {month} {year}
-          </span>
-          <p>{description}</p>
-          <footer>
-            <div>
-              <h4>Partners</h4>
-              <div>{$partners}</div>
-            </div>
-            <Link to={`/projects/${year}/${monthNumber}/${slug}`}>
-              <Button inverted small>
-                More about the project &gt;
-              </Button>
-            </Link>
-          </footer>
-        </article>
-      );
-    });
-    return <ProjectsForYear key={`projects-${year}`}>{$projects}</ProjectsForYear>;
+    const $projects = populatedProjectsByYear[year].map(project => (
+      <Project key={project.id} year={year} {...project} />
+    ));
+    return (
+      <ProjectsForYear key={`projects-${year}`}>
+        {$projects}
+        {$projects}
+        {$projects}
+      </ProjectsForYear>
+    );
   };
 
   const $tabs = Object.keys(populatedProjectsByYear)
