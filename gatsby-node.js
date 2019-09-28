@@ -16,13 +16,42 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   }
 };
 
+const flatten = data =>
+  data.edges.reduce((collection, { node }) => {
+    collection.push(node);
+    return collection;
+  }, []);
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const result = await graphql(`
     query {
-      allProjectJson {
+      teamData: allPersonJson {
         edges {
           node {
+            lastName
+            firstName
+            github
+            twitter
+            linkedIn
+            role
+            id
+          }
+        }
+      }
+      partnerData: allPartnerJson {
+        edges {
+          node {
+            logo
+            name
+            website
+          }
+        }
+      }
+      projectData: allProjectJson {
+        edges {
+          node {
+            id
             crest
             name
             date
@@ -36,8 +65,14 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  result.data.allProjectJson.edges.forEach(({ node }) => {
-    const { name, date } = node;
+  const { projectData, teamData, partnerData } = result.data;
+
+  const partners = flatten(partnerData);
+  const team = flatten(teamData);
+  const projects = flatten(projectData);
+
+  projects.forEach(project => {
+    const { name, date } = project;
     const slug = slugify(name, { replacement: '-', lower: true });
 
     const d = new Date(date);
@@ -49,8 +84,9 @@ exports.createPages = async ({ graphql, actions }) => {
       matchPath: `/projects/${year}/${month}/${slug}`,
       component: path.resolve(`./src/templates/ProjectDetail.jsx`),
       context: {
-        slug,
-        ...node
+        ...project,
+        partners: partners.filter(p => project.partners.includes(p.name)),
+        team: team.filter(person => project.team.includes(person.id))
       }
     });
   });
