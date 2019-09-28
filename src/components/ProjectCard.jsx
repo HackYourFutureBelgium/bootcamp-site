@@ -103,14 +103,15 @@ const PartnerLink = styled(ExternalLink)`
   }
 `;
 
-const ProjectCard = ({ id, year, crest, name, month, description, monthNumber, partners }) => {
+const ProjectCard = ({ id, year, crest, name, month, description, twoDigitMonth, partners }) => {
   const $partners = partners.map(p => (
     <PartnerLink key={`${id}-${p.name}`} href={p.website}>
       <img src={p.logo} alt={`${p.name} logo`} />
     </PartnerLink>
   ));
+
   const slug = slugify(name, { replacement: '-', lower: true });
-  const href = `/projects/${year}/${monthNumber}/${slug}`;
+  const href = `/projects/${year}/${twoDigitMonth}/${slug}`;
 
   return (
     <Project>
@@ -118,11 +119,13 @@ const ProjectCard = ({ id, year, crest, name, month, description, monthNumber, p
         <img src={crest} alt={`${name} logo`} />
       </Crest>
       <Content>
-        <h3>{name}</h3>
+        <h3>
+          <Link to={href}>{name}</Link>
+        </h3>
         <span>
           {month} {year}
         </span>
-        <TextTruncate element="p" line={2} text={description} />
+        <TextTruncate element="div" line={2} text={description} />
       </Content>
       <Footer>
         <div>
@@ -147,10 +150,10 @@ ProjectCard.propTypes = {
   crest: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   month: PropTypes.string.isRequired,
-  monthNumber: PropTypes.number.isRequired,
+  twoDigitMonth: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  partners: PropTypes.object.isRequired
+  partners: PropTypes.array.isRequired
 };
 
 export default ProjectCard;

@@ -130,7 +130,7 @@ const Projects = () => {
   const populatedProjectsByYear = projects.reduce((byYear, project) => {
     const date = new Date(project.date);
     const year = date.getFullYear();
-    const monthNumber = `0${date.getMonth() + 1}`.slice(-2);
+    const twoDigitMonth = `0${date.getMonth() + 1}`.slice(-2);
 
     const populatedPartners = project.partners.reduce((populated, partner) => {
       const partnerObj = partners.find(p => p.name === partner);
@@ -142,7 +142,7 @@ const Projects = () => {
     byYear[year].push({
       ...project,
       month: getMonthNameFromDate(date),
-      monthNumber,
+      twoDigitMonth,
       partners: populatedPartners
     });
     return byYear;
@@ -152,7 +152,7 @@ const Projects = () => {
 
   const renderProjects = year => {
     const $projects = populatedProjectsByYear[year].map(project => (
-      <Project key={project.id} year={year} {...project} />
+      <Project key={project.id} year={parseInt(year, 0)} {...project} />
     ));
     return <ProjectsForYear key={`projects-${year}`}>{$projects}</ProjectsForYear>;
   };
