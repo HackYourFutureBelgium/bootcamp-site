@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
-import HeadshotCard from '../components/HeadshotCard';
+import PersonDetail from '../components/PersonDetail';
 import QuoteCard from '../components/QuoteCard';
 import PartnerLink from '../components/Partner';
 import { dimensions } from '../styles/constants';
@@ -247,7 +247,7 @@ const TeamPictures = styled.div`
   }
 `;
 
-const Headshot = styled(HeadshotCard)`
+const Mugshot = styled(PersonDetail)`
   margin-bottom: 8rem;
   border: 1.4rem solid transparent;
   background-clip: padding-box;
@@ -311,7 +311,7 @@ const IndexPage = () => {
   const team = flattenQueriedJson(teamData);
   const partners = flattenQueriedJson(partnerData);
 
-  const $teamMembers = team.reverse().map(member => <Headshot key={member.id} {...member} />);
+  const $teamMembers = team.reverse().map(member => <Mugshot key={member.id} {...member} />);
   const $partners = partners.map(partner => <Partner key={partner.id} {...partner} />);
   return (
     <Layout flex>
