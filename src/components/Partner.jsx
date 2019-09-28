@@ -1,7 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ExternalLink from './UI/ExternalLink';
+
+import { partnerType } from '../types';
 
 const PartnerLink = styled(ExternalLink)`
   text-align: center;
@@ -23,10 +24,6 @@ const Partner = ({ name, logo, website, ...rest }) => (
   </PartnerLink>
 );
 
-Partner.propTypes = {
-  logo: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  website: PropTypes.string.isRequired
-};
+Partner.propTypes = { ...partnerType };
 
 export default Partner;

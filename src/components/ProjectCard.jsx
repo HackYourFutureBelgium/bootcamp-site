@@ -6,6 +6,7 @@ import { Link } from 'gatsby';
 
 import { colors } from '../styles/constants';
 import { Button, Card, ExternalLink, TextTruncate } from './UI';
+import { partialProjectType } from '../types';
 
 const Project = styled(Card)`
   display: grid;
@@ -142,18 +143,12 @@ const ProjectCard = ({ id, year, crest, name, month, description, twoDigitMonth,
   );
 };
 
-ProjectCard.defaultProps = {};
-
 ProjectCard.propTypes = {
   year: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
-  crest: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   month: PropTypes.string.isRequired,
   twoDigitMonth: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  partners: PropTypes.array.isRequired
+  ...partialProjectType
 };
 
 export default ProjectCard;

@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ExternalLink from './UI/ExternalLink';
 import { colors, fonts } from '../styles/constants';
 import { linkedInIcon, twitterIconWhite, emailIconWhite } from '../images/icons';
+import { personType } from '../types';
 
 const Card = styled.div`
   display: flex;
@@ -94,17 +94,10 @@ const HeadshotCard = ({
 HeadshotCard.defaultProps = {
   twitter: null,
   linkedIn: null,
-  email: null
+  email: null,
+  github: null
 };
 
-HeadshotCard.propTypes = {
-  lastName: PropTypes.string.isRequired,
-  firstName: PropTypes.string.isRequired,
-  role: PropTypes.string.isRequired,
-  twitter: PropTypes.string,
-  linkedIn: PropTypes.string,
-  email: PropTypes.string,
-  picture: PropTypes.string.isRequired
-};
+HeadshotCard.propTypes = { ...personType };
 
 export default HeadshotCard;
