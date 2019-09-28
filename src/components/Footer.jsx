@@ -68,11 +68,16 @@ const Details = styled.div`
 const DetailItem = styled.li`
   list-style-type: none;
   background-repeat: no-repeat;
-  background-position: left 0.4rem;
+  background-position: left 0.3rem;
   background-size: 1.8rem 1.8rem;
-  padding-left: 3rem;
   line-height: 1.6;
   margin-bottom: 1rem;
+  a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding-left: 3rem;
+  }
 `;
 
 const Location = styled(DetailItem)`
@@ -181,9 +186,11 @@ const Footer = () => {
           <h5>HackYourFuture Belgium</h5>
           <ul>
             <Location>
-              BeCentral, Cantersteen 12
-              <br />
-              1000 Brussels
+              <ExternalLink href="https://www.openstreetmap.org/node/4841295873#map=19/50.84547/4.35748">
+                BeCentral, Cantersteen 12
+                <br />
+                1000 Brussels
+              </ExternalLink>
             </Location>
             <Email>
               <ExternalLink href="mailto:contact@hackyourfuture.be">
