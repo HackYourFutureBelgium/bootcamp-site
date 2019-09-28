@@ -11,6 +11,7 @@ const Project = styled(Card)`
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 3fr 2fr;
+  max-width: 68rem;
   grid-template-areas:
     'crest content'
     'crest footer';
@@ -30,15 +31,21 @@ const Project = styled(Card)`
     grid-template-rows: 16rem 1fr;
   }
   @media (max-width: 460px) {
-    grid-template-columns: 3fr 5fr;
+    grid-template-areas:
+      'content content'
+      'footer footer';
   }
 `;
 
 const Crest = styled(Link)`
   grid-area: crest;
   align-self: center;
+  max-width: 16rem;
   @media (min-width: 500px) and (max-width: 680px) {
     align-self: start;
+  }
+  @media (max-width: 460px) {
+    display: none;
   }
   img {
     max-width: 100%;
