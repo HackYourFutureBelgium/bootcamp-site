@@ -5,6 +5,7 @@ import { Link } from 'gatsby';
 
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
+import PersonDetailGallery from '../components/PersonDetailGallery';
 import { colors } from '../styles/constants';
 import { ExternalLink, Button } from '../components/UI';
 import { projectType } from '../types';
@@ -73,6 +74,7 @@ const Crest = styled.div`
   grid-area: crest;
   width: 70%;
   max-width: 26rem;
+  padding-top: 1rem;
   @media (max-width: 880px) {
     padding-top: 2rem;
   }
@@ -112,7 +114,7 @@ const TeamSection = styled.section`
 
 const ProjectDetail = ({ pageContext: project }) => {
   const $partners = project.partners.map(p => (
-    <ExternalLink href={p.website}>
+    <ExternalLink key={p.id} href={p.website}>
       <img src={p.logo} alt={`${p.name} logo`} />
     </ExternalLink>
   ));
@@ -143,6 +145,7 @@ const ProjectDetail = ({ pageContext: project }) => {
         <h2>
           Meet the <strong>team</strong>
         </h2>
+        <PersonDetailGallery people={project.team} />
       </TeamSection>
     </PageContainer>
   );

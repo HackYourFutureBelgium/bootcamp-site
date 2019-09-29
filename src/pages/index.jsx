@@ -5,10 +5,9 @@ import styled from 'styled-components';
 
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
-import PersonDetail from '../components/PersonDetail';
 import QuoteCard from '../components/QuoteCard';
 import PartnerLink from '../components/Partner';
-import { dimensions } from '../styles/constants';
+import PersonDetailGallery from '../components/PersonDetailGallery';
 import { Highlight, Card, Button, ExternalLink, DottedGraphic } from '../components/UI';
 import { rocketIcon, codeEditorIcon, peopleIcon, armIcon } from '../images/icons';
 import { flattenQueriedJson } from '../util';
@@ -237,25 +236,6 @@ const Team = styled.section`
   }
 `;
 
-const TeamPictures = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 4rem;
-  justify-content: flex-start;
-  @media (max-width: 930px) {
-    justify-content: center;
-  }
-`;
-
-const Mugshot = styled(PersonDetail)`
-  margin-bottom: 8rem;
-  border: 1.4rem solid transparent;
-  background-clip: padding-box;
-  @media (max-width: 970px) {
-    margin-bottom: 3rem;
-  }
-`;
-
 const IndexPage = () => {
   const { headerImage, groupImage, bert, teamData, partnerData } = useStaticQuery(graphql`
     query {
@@ -311,7 +291,6 @@ const IndexPage = () => {
   const team = flattenQueriedJson(teamData);
   const partners = flattenQueriedJson(partnerData);
 
-  const $teamMembers = team.reverse().map(member => <Mugshot key={member.id} {...member} />);
   const $partners = partners.map(partner => <Partner key={partner.id} {...partner} />);
   return (
     <Layout flex>
@@ -404,7 +383,7 @@ const IndexPage = () => {
         <h2>
           Meet the <span className="stronger">team</span>
         </h2>
-        <TeamPictures>{$teamMembers}</TeamPictures>
+        <PersonDetailGallery people={team.reverse()} />
       </Team>
     </Layout>
   );
