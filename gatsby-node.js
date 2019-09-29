@@ -36,12 +36,14 @@ exports.createPages = async ({ graphql, actions }) => {
             linkedIn
             role
             id
+            picture
           }
         }
       }
       partnerData: allPartnerJson {
         edges {
           node {
+            id
             logo
             name
             website
