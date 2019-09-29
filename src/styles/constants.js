@@ -45,7 +45,7 @@ const dimensions = {
     }
   },
   nav: {
-    height: 28
+    height: 24
   },
   footer: {
     height: {

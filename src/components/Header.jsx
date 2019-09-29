@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 
 import verticalLogo from '../images/logo/bootcamp-vertical.svg';
 import horizontalLogo from '../images/logo/bootcamp-horizontal.svg';
-import { Button, Hamburger } from './UI';
+import { Button, Hamburger, ExternalLink } from './UI';
 import { dimensions, colors, transitionTimes, animations } from '../styles/constants';
 
 const HeaderStyle = styled.header`
@@ -30,6 +30,9 @@ const HeaderStyle = styled.header`
     css`
       ${animations.slideHeaderDown}
     `};
+  @media (max-width: 420px) {
+    padding: 0 3rem;
+  }
   .vertical-image-container {
     height: 80%;
     img {
@@ -190,11 +193,16 @@ const Header = () => {
             <Link to="/partners">Partners</Link>
           </NavItem>
           <NavItem>
-            <Link to="/faq">FAQ</Link>
+            <ExternalLink href="https://hackyourfuture.be">Training</ExternalLink>
           </NavItem>
-          <NavItem>
-            <Link to="/contact">Contact</Link>
-          </NavItem>
+          {/*
+            <NavItem>
+              <Link to="/faq">FAQ</Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/contact">Contact</Link>
+            </NavItem>
+          */}
           <NavItem className="nav__cta">
             <Link to="/partners">
               <Button big={headerIsAtTop}>Apply now</Button>
