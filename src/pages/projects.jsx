@@ -18,9 +18,11 @@ const IntroContainer = styled.section`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 4rem;
   @media (max-width: 1100px) {
     align-items: center;
+  }
+  @media (max-width: 600px) {
+    margin-bottom: 1rem;
   }
 `;
 
