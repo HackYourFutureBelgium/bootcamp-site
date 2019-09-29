@@ -119,6 +119,12 @@ const ProjectDetail = ({ pageContext: project }) => {
     </ExternalLink>
   ));
 
+  const team = project.team.sort((p1, p2) => {
+    if (p1.role < p2.role) return 1;
+    if (p1.role > p2.role) return -1;
+    return 0;
+  });
+
   return (
     <PageContainer>
       {/* <SEO title={`${project.name} project`} /> */}
@@ -145,7 +151,7 @@ const ProjectDetail = ({ pageContext: project }) => {
         <h2>
           Meet the <strong>team</strong>
         </h2>
-        <PersonDetailGallery people={project.team} />
+        <PersonDetailGallery people={team} />
       </TeamSection>
     </PageContainer>
   );
