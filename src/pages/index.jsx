@@ -354,8 +354,8 @@ const IndexPage = () => {
               You <strong>speak &amp; understand English</strong> at an intermediate level
             </li>
             <li>
-              You are able to follow the bootcamp <strong>full time</strong> during the{' '}
-              <strong>6 weeks.</strong>
+              You are able to follow the bootcamp <strong>Monday-Thursday</strong> during the{' '}
+              <strong>4 weeks.</strong>
             </li>
           </ul>
           <ExternalLink href="https://forms.gle/dHP7V9JkNBscaA1C7">
