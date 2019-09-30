@@ -44,6 +44,7 @@ const ValueWrapper = styled.div`
   align-self: center;
   background: #fff;
   width: 80%;
+  max-width: 100rem;
   margin-top: -12vw;
   z-index: 1;
   padding: 2rem;
@@ -54,9 +55,6 @@ const ValueWrapper = styled.div`
   column-gap: 2rem;
   row-gap: 0.5rem;
   place-items: center;
-  @media (min-width: 1500px) {
-    max-width: 100rem;
-  }
   @media (max-width: 820px) {
     position: static;
     width: 90%;

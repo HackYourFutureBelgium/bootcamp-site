@@ -204,7 +204,7 @@ const Header = () => {
             </NavItem>
           */}
           <NavItem className="nav__cta">
-            <Link to="/partners">
+            <Link to="/apply">
               <Button big={headerIsAtTop}>Apply now</Button>
             </Link>
           </NavItem>
