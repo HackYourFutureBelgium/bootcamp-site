@@ -21,6 +21,9 @@ const IntroContainer = styled.div`
     width: 60%;
     max-width: 70rem;
   }
+  a {
+    color: ${colors.orange};
+  }
   @media (max-width: 860px) {
     p {
       width: 80%;
@@ -104,6 +107,11 @@ const Apply = () => {
         <p>
           We provide a unique opportunity for refugee web developers to show their potential while
           connecting them with the Belgian labour market. Women are strongly encouraged to apply.
+        </p>
+        <p>
+          If you don&apos;t have experience as a web developer yet,{' '}
+          <ExternalLink href="https://hackyourfuture.be">our web development school</ExternalLink>{' '}
+          will be a better fit.
         </p>
         <p>
           <strong>*This bootcamp is free:</strong> we cover transport costs and provide laptops for
