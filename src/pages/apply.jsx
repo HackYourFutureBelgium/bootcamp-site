@@ -40,7 +40,7 @@ const Requirements = styled.div`
   margin: 4rem auto;
   background: #fff;
   width: 100%;
-  max-width: 100rem;
+  max-width: 110rem;
   padding: 2rem;
   box-shadow: 0 0 4px 0px rgba(81, 81, 81, 0.5);
   display: grid;
