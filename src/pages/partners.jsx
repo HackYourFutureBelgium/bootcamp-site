@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
-import { colors } from '../styles/constants';
+import FeaturedPartners from '../components/FeaturedPartners';
 import { ExternalLink, Button } from '../components/UI';
 
 const PageContainer = styled(Layout)`
@@ -22,10 +22,13 @@ const IntroContainer = styled.div`
   background-position: top right;
   background-size: 38vw;
   p {
-    width: 45vw;
+    width: 45%;
   }
   @media (min-width: 1200px) {
-    background-size: auto 100%;
+    width: 120rem;
+    margin-left: auto;
+    margin-right: auto;
+    background-size: 55rem;
   }
   @media (max-width: 780px) {
     background-image: none;
@@ -49,6 +52,54 @@ const IntroContainer = styled.div`
   }
 `;
 
+const PartnerContainer = styled.section`
+  margin-top: 6rem;
+  width: 100%;
+  padding-right: 8%;
+  padding-bottom: 10rem;
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  background-image: url(${props => props.image});
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: 38vw;
+  @media (min-width: 1200px) {
+    width: 120rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5rem;
+    padding-right: 0;
+    background-size: 55rem;
+  }
+  @media (max-width: 780px) {
+    background-image: none;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  @media (max-width: 520px) {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 0;
+  }
+  @media (max-width: 460px) {
+    text-align: center;
+    justify-content: center;
+  }
+`;
+
+const PartnerGrid = styled(FeaturedPartners)`
+  justify-self: flex-end;
+  width: 50%;
+  @media (max-width: 780px) {
+    width: 90%;
+  }
+  @media (max-width: 520px) {
+    width: 100%;
+  }
+`;
+
 const Partners = () => {
   const { introImage, huddleImage } = useStaticQuery(graphql`
     query {
@@ -59,10 +110,10 @@ const Partners = () => {
           }
         }
       }
-      huddleImage: file(relativePath: { eq: "home-group-color.jpg" }) {
+      huddleImage: file(relativePath: { eq: "steve-ibrahim-huddle.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
+          fixed(width: 550, quality: 85) {
+            ...GatsbyImageSharpFixed_noBase64
           }
         }
       }
@@ -89,6 +140,10 @@ const Partners = () => {
           <Button inverted>Become our partner</Button>
         </ExternalLink>
       </IntroContainer>
+      {/* TODO add concrete proposals here */}
+      <PartnerContainer image={huddleImage.childImageSharp.fixed.src}>
+        <PartnerGrid right />
+      </PartnerContainer>
     </PageContainer>
   );
 };

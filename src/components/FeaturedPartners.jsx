@@ -28,6 +28,9 @@ const PartnerGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: ${props => (props.right ? 'flex-end' : 'flex-start')};
+  @media (max-width: 460px) {
+    justify-content: center;
+  }
 `;
 
 const Partner = styled(PartnerLink)`
@@ -41,6 +44,9 @@ const CTA = styled(Link)`
   margin-top: 1.6rem;
   @media (min-width: 400px) and (max-width: 1150px) {
     align-self: ${props => (props.right ? 'flex-end' : 'flex-start')};
+  }
+  @media (max-width: 460px) {
+    align-self: center;
   }
 `;
 
