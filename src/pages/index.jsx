@@ -243,7 +243,7 @@ const IndexPage = () => {
   const team = flattenQueriedJson(teamData);
   return (
     <Layout flex>
-      {/* <SEO title="Home" /> */}
+      <SEO title="Home" />
       <HeaderImageContainer>
         <Img fluid={headerImage.childImageSharp.fluid} alt="Bootcamp atmosphere" />
       </HeaderImageContainer>

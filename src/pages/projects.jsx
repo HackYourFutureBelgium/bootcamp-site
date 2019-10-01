@@ -167,7 +167,7 @@ const Projects = () => {
 
   return (
     <Layout>
-      {/* <SEO title="Our projects" /> */}
+      <SEO title="Our projects" />
       <IntroContainer>
         <IntroContent>
           <h2>

@@ -19,7 +19,7 @@ const Container = styled(Layout)`
 
 const NotFoundPage = () => (
   <Container>
-    {/* <SEO title="Not Found" /> */}
+    <SEO title="Not Found" />
     <h1>Page does not exist</h1>
     <p>
       You&apos;ve stumbled on a page that doesn&apos;t exist. <br />

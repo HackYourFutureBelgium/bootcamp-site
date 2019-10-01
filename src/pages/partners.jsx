@@ -122,7 +122,7 @@ const Partners = () => {
 
   return (
     <PageContainer>
-      {/* <SEO title="Partners" /> */}
+      <SEO title="Partners" />
       <IntroContainer image={introImage.childImageSharp.fixed.src}>
         <h2>
           A real career <strong>kickstarter</strong>

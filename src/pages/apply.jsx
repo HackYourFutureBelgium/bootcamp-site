@@ -99,7 +99,7 @@ const Requirements = styled.div`
 const Apply = () => {
   return (
     <PageContainer>
-      {/* <SEO title="Apply" /> */}
+      <SEO title="Apply" />
       <IntroContainer>
         <h2>
           Apply for our <strong>next bootcamp</strong>
