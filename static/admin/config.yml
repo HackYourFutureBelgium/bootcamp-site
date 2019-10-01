@@ -161,7 +161,7 @@ collections:
       - { name: website, label: Website, widget: string }
       - {
           name: isFeatured,
-          label: Is on home page (partners we've worked with section),
+          label: Should the logo be on the home page and the partners page (partners we've worked with section)?,
           widget: boolean,
           default: true,
         }

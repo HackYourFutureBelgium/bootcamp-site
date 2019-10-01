@@ -1,13 +1,13 @@
 import React from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image/withIEPolyfill';
 import styled from 'styled-components';
 
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
 import QuoteCard from '../components/QuoteCard';
-import PartnerLink from '../components/Partner';
 import PersonDetailGallery from '../components/PersonDetailGallery';
+import FeaturedPartners from '../components/FeaturedPartners';
 import { Highlight, Card, Button, ExternalLink, DottedGraphic } from '../components/UI';
 import { rocketIcon, codeEditorIcon, peopleIcon, armIcon } from '../images/icons';
 import { flattenQueriedJson } from '../util';
@@ -177,48 +177,12 @@ const PartnerSection = styled.section`
   }
 `;
 
-const Partners = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  h2 {
-    margin-bottom: 3rem;
-  }
-  @media (max-width: 1150px) {
-    width: 100%;
-    align-self: flex-start;
-    margin-bottom: 8rem;
-  }
-  @media (max-width: 880px) {
-    margin-bottom: 14rem;
-  }
-`;
-
 const Quote = styled(QuoteCard)`
   @media (max-width: 1150px) {
     align-self: flex-end;
   }
   @media (max-width: 710px) {
     align-self: center;
-  }
-`;
-
-const PartnerGrid = styled.div`
-  margin-bottom: 3rem;
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const Partner = styled(PartnerLink)`
-  margin-right: 1.6rem;
-  margin-top: 2rem;
-  width: 12rem;
-`;
-
-const PartnerCTA = styled(Link)`
-  align-self: flex-end;
-  @media (min-width: 400px) and (max-width: 1150px) {
-    align-self: flex-start;
   }
 `;
 
@@ -235,7 +199,7 @@ const Team = styled.section`
 `;
 
 const IndexPage = () => {
-  const { headerImage, groupImage, bert, teamData, partnerData } = useStaticQuery(graphql`
+  const { headerImage, groupImage, bert, teamData } = useStaticQuery(graphql`
     query {
       headerImage: file(relativePath: { eq: "home-group-color.jpg" }) {
         childImageSharp {
@@ -273,23 +237,10 @@ const IndexPage = () => {
           }
         }
       }
-      partnerData: allPartnerJson(filter: { isFeatured: { eq: true } }) {
-        edges {
-          node {
-            logo
-            name
-            website
-            id
-          }
-        }
-      }
     }
   `);
 
   const team = flattenQueriedJson(teamData);
-  const partners = flattenQueriedJson(partnerData);
-
-  const $partners = partners.map(partner => <Partner key={partner.id} {...partner} />);
   return (
     <Layout flex>
       {/* <SEO title="Home" /> */}
@@ -363,15 +314,7 @@ const IndexPage = () => {
         <DottedGraphicApply />
       </WhoCanApply>
       <PartnerSection>
-        <Partners>
-          <h2>
-            <span className="stronger">Partners</span> we&apos;ve worked with
-          </h2>
-          <PartnerGrid>{$partners}</PartnerGrid>
-          <PartnerCTA to="/partners">
-            <Button inverted>Become a partner</Button>
-          </PartnerCTA>
-        </Partners>
+        <FeaturedPartners />
         <Quote by="Bert Jehoul" from="Open Recognition Belgium" pic={bert.childImageSharp.fluid}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit do eiusmod tempor incididunt ut
           labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
