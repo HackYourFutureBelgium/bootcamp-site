@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
+import Img from 'gatsby-image/withIEPolyfill';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import { ExternalLink } from './UI';
