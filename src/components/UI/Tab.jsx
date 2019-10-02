@@ -19,7 +19,7 @@ const StyledTab = styled.button`
   background-color: ${props => (props.isActive ? '#fff' : colors.offWhite)};
   font-weight: ${props => (props.isActive ? 'bolder' : 'normal')};
   margin-left: 2.5rem;
-  box-shadow: 0 0 16px 4px rgba(81, 81, 81, 0.1);
+  box-shadow: 0 0 22px 2px rgba(81, 81, 81, 0.1);
 `;
 
 const Tab = ({ children, ...rest }) => {

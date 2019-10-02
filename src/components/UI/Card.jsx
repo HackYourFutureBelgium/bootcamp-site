@@ -10,11 +10,11 @@ const StyledCard = styled.article`
     props.accentPosition === 'left'
       ? `
         border-left: 5px solid ${colors.pink};
-        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 2px 2px 22px 1px rgba(0, 0, 0, 0.1);
         `
       : `
         border-right: 5px solid ${colors.pink};
-        box-shadow: -2px 2px 4px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: -2px 2px 22px 1px rgba(0, 0, 0, 0.1);
         `}
 `;
 

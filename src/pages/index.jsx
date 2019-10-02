@@ -46,7 +46,7 @@ const ValueWrapper = styled.div`
   width: 80%;
   z-index: 1;
   padding: 2rem;
-  box-shadow: 0 0 4px 0px rgba(81, 81, 81, 0.5);
+  box-shadow: 0 0 32px 1px rgba(81, 81, 81, 0.1);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 6fr auto;
