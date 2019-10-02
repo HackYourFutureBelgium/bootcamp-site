@@ -35,6 +35,9 @@ const HeaderCard = styled(Card)`
   @media (max-width: 400px) {
     margin-top: 38vw;
   }
+  p {
+    line-height: 1.8;
+  }
 `;
 
 const ValueWrapper = styled.div`
