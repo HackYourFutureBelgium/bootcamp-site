@@ -21,6 +21,8 @@ const Main = styled.main`
   display: block;
   width: 100%;
   padding-top: ${dimensions.header.height.large}rem;
+  max-width: 120rem;
+  margin: 0 auto;
 `;
 
 const FlexedMain = styled(Main)`

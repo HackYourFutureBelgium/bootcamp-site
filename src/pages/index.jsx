@@ -12,40 +12,35 @@ import { Highlight, Card, Button, ExternalLink, DottedGraphic } from '../compone
 import { rocketIcon, codeEditorIcon, peopleIcon, armIcon } from '../images/icons';
 import { flattenQueriedJson } from '../util';
 
-const HeaderImageContainer = styled.aside`
-  align-self: flex-end;
-  width: 65%;
-  max-width: 120rem;
+const TopSection = styled.div`
+  background-image: url(${props => props.image});
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: 65%;
+  width: 100%;
   @media (max-width: 820px) {
-    width: 100%;
+    background-size: 100%;
   }
 `;
 
 const HeaderCard = styled(Card)`
   width: 40rem;
-  position: absolute;
-  top: 16vw;
-  left: calc(50% - 40rem);
-  @media (min-width: 1850px) {
-    top: 40vh;
-  }
+  margin: 6rem 0 5.5rem 12%;
   @media (max-width: 820px) {
-    left: calc(50% - 20rem);
-    top: 60vw;
+    margin: 44vw auto 4rem auto;
+  }
+  @media (max-width: 500px) {
+    width: 90%;
   }
   @media (max-width: 400px) {
-    width: 32rem;
-    left: calc(50% - 16rem);
-    top: 60vw;
+    margin-top: 38vw;
   }
 `;
 
 const ValueWrapper = styled.div`
-  align-self: center;
+  margin: 0 auto;
   background: #fff;
   width: 80%;
-  max-width: 100rem;
-  margin-top: -12vw;
   z-index: 1;
   padding: 2rem;
   box-shadow: 0 0 4px 0px rgba(81, 81, 81, 0.5);
@@ -56,9 +51,7 @@ const ValueWrapper = styled.div`
   row-gap: 0.5rem;
   place-items: center;
   @media (max-width: 820px) {
-    position: static;
     width: 90%;
-    margin-top: 10rem;
     align-self: center;
     padding: 2rem;
   }
@@ -177,12 +170,19 @@ const PartnerSection = styled.section`
   }
 `;
 
+const Partners = styled(FeaturedPartners)`
+  @media (max-width: 710px) {
+    justify-self: center;
+  }
+`;
+
 const Quote = styled(QuoteCard)`
   @media (max-width: 1150px) {
     align-self: flex-end;
   }
   @media (max-width: 710px) {
     align-self: center;
+    width: 100%;
   }
 `;
 
@@ -203,8 +203,8 @@ const IndexPage = () => {
     query {
       headerImage: file(relativePath: { eq: "home-group-color.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
+          fixed(width: 1200) {
+            ...GatsbyImageSharpFixed_noBase64
           }
         }
       }
@@ -244,43 +244,43 @@ const IndexPage = () => {
   return (
     <Layout flex>
       <SEO title="Home" />
-      <HeaderImageContainer>
-        <Img fluid={headerImage.childImageSharp.fluid} alt="Bootcamp atmosphere" />
-      </HeaderImageContainer>
-      <HeaderCard>
-        <p>
-          <strong>HackYourFuture&apos;s Bootcamp</strong> boosts refugees&apos; opportunities in the{' '}
-          <strong>Belgian job market</strong> through the development of <strong>real-world</strong>
-          , <strong>open source</strong>, <strong>positive impact</strong> projects.
-        </p>
-      </HeaderCard>
-      <ValueWrapper>
-        {/* Leave alt tags blank, we want these illustrations to be skipped by screen readers */}
-        <div className="values__rocket">
-          <img src={rocketIcon} alt="" role="presentation" />
-        </div>
-        <div className="values__editor">
-          <img src={codeEditorIcon} alt="" role="presentation" />
-        </div>
-        <div className="values__people">
-          <img src={peopleIcon} alt="" role="presentation" />
-        </div>
-        <div className="values__arm">
-          <img src={armIcon} alt="" role="presentation" />
-        </div>
-        <p>
-          <Highlight>4-week</Highlight> intensive bootcamp for refugees
-        </p>
-        <p>
-          Coaching given by <Highlight>IT-experts</Highlight>
-        </p>
-        <p>
-          open source projects with a <Highlight>positive impact</Highlight>
-        </p>
-        <p>
-          career starter for the <Highlight>Belgian IT industry</Highlight>
-        </p>
-      </ValueWrapper>
+      <TopSection image={headerImage.childImageSharp.fixed.src}>
+        <HeaderCard>
+          <p>
+            <strong>HackYourFuture&apos;s Bootcamp</strong> boosts refugees&apos; opportunities in
+            the <strong>Belgian job market</strong> through the development of{' '}
+            <strong>real-world</strong>, <strong>open source</strong>,{' '}
+            <strong>positive impact</strong> projects.
+          </p>
+        </HeaderCard>
+        <ValueWrapper>
+          {/* Leave alt tags blank, we want these illustrations to be skipped by screen readers */}
+          <div className="values__rocket">
+            <img src={rocketIcon} alt="" role="presentation" />
+          </div>
+          <div className="values__editor">
+            <img src={codeEditorIcon} alt="" role="presentation" />
+          </div>
+          <div className="values__people">
+            <img src={peopleIcon} alt="" role="presentation" />
+          </div>
+          <div className="values__arm">
+            <img src={armIcon} alt="" role="presentation" />
+          </div>
+          <p>
+            <Highlight>4-week</Highlight> intensive bootcamp for refugees
+          </p>
+          <p>
+            Coaching given by <Highlight>IT-experts</Highlight>
+          </p>
+          <p>
+            open source projects with a <Highlight>positive impact</Highlight>
+          </p>
+          <p>
+            career starter for the <Highlight>Belgian IT industry</Highlight>
+          </p>
+        </ValueWrapper>
+      </TopSection>
       <WhoCanApply>
         <GroupImageContainer>
           <Img
@@ -314,7 +314,7 @@ const IndexPage = () => {
         <DottedGraphicApply />
       </WhoCanApply>
       <PartnerSection>
-        <FeaturedPartners />
+        <Partners />
         <Quote by="Bert Jehoul" from="Open Recognition Belgium" pic={bert.childImageSharp.fluid}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit do eiusmod tempor incididunt ut
           labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
