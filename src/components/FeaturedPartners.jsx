@@ -27,23 +27,23 @@ const PartnerGrid = styled.div`
   margin-bottom: 3rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: ${props => (props.right ? 'flex-end' : 'flex-start')};
+  justify-content: ${props => (props.alignRight ? 'flex-end' : 'flex-start')};
   @media (max-width: 460px) {
     justify-content: center;
   }
 `;
 
 const Partner = styled(PartnerLink)`
-  ${props => (props.right ? 'margin-left' : 'margin-right')}: 1.6rem;
+  ${props => (props.alignRight ? 'margin-left' : 'margin-right')}: 1.6rem;
   margin-top: 2rem;
   width: 12rem;
 `;
 
-const CTA = styled(Link)`
+const CTA = styled(({ alignRight, ...rest }) => <Link {...rest} />)`
   align-self: flex-end;
   margin-top: 1.6rem;
   @media (min-width: 400px) and (max-width: 1150px) {
-    align-self: ${props => (props.right ? 'flex-end' : 'flex-start')};
+    align-self: ${props => (props.alignRight ? 'flex-end' : 'flex-start')};
   }
   @media (max-width: 460px) {
     align-self: center;
@@ -66,15 +66,17 @@ const FeaturedPartners = ({ right, ...styleProps }) => {
     }
   `);
 
+  const alignRight = right;
+
   const partners = flattenQueriedJson(partnerData);
-  const $partners = partners.map(p => <Partner right={right} key={p.id} {...p} />);
+  const $partners = partners.map(p => <Partner alignRight={alignRight} key={p.id} {...p} />);
   return (
     <Partners {...styleProps}>
       <h2>
         <span className="stronger">Partners</span> we&apos;ve worked with
       </h2>
-      <PartnerGrid right={right}>{$partners}</PartnerGrid>
-      <CTA right={right} to="/partners">
+      <PartnerGrid alignRight={alignRight}>{$partners}</PartnerGrid>
+      <CTA alignRight={alignRight} to="/partners">
         <Button inverted>Become our partner</Button>
       </CTA>
     </Partners>
