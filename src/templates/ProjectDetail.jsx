@@ -127,7 +127,7 @@ const ProjectDetail = ({ pageContext: project }) => {
 
   return (
     <PageContainer>
-      {/* <SEO title={`${project.name} project`} /> */}
+      <SEO title={`${project.name} project`} />
       <TopSection>
         <Link to="/projects">&lt; Our projects</Link>
         <ProjectSection>
