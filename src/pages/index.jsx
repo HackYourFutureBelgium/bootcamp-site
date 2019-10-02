@@ -319,8 +319,9 @@ const IndexPage = () => {
       <PartnerSection>
         <Partners />
         <Quote by="Bert Jehoul" from="Open Recognition Belgium" pic={bert.childImageSharp.fluid}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          We presented the bootcamp participants with a difficult problem, but the team made their
+          own interpretation and delivered great work while spreading the message of Open
+          Recognition.
         </Quote>
       </PartnerSection>
       <Team>
