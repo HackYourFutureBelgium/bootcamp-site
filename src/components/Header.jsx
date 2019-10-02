@@ -30,7 +30,7 @@ const HeaderStyle = styled.header`
     css`
       ${animations.slideHeaderDown}
     `};
-  @media (max-width: 420px) {
+  @media (max-width: 500px) {
     padding: 0 3rem;
   }
   .vertical-image-container {
