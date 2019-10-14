@@ -12,7 +12,7 @@ media_library:
     api_key: 514369577986481
     use_transformations: true
     use_secure_url: false
-site_url: https://hyf-bootcamp.netlify.com
+site_url: https://bootcamp.hackyourfuture.be
 collections:
   - name: project
     label: Project
