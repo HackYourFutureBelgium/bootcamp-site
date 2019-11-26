@@ -67,11 +67,12 @@ const ProjectSection = styled(Tabbable)`
 const Tabs = styled.div`
   display: flex;
   background-color: ${colors.offWhite};
+  padding-left: 2rem;
 `;
 
 const ProjectsForYear = styled(Panel)`
   background-color: ${colors.offWhite};
-  padding: 2rem 4rem;
+  padding: 2rem 2rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(auto-fill, 1fr);
