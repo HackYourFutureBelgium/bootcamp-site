@@ -7,7 +7,14 @@
   "team": [
     "f4280086-cef8-4d07-a33b-8d3c8716ab44",
     "beb32698-9ae8-4e30-bbd3-74399c98be6e",
-    "d02e5b63-d2c2-4683-80e4-4225a435b94d"
+    "d02e5b63-d2c2-4683-80e4-4225a435b94d",
+    "225510fc-81a8-4715-baf0-0a93556bed4b",
+    "2fe285c4-e5ed-437f-9cf2-e11a841230cf",
+    "bba548c3-7fc2-41ce-918e-026e34f362f7",
+    "8f23b870-4596-404e-a089-ac4b57d69fde"
   ],
-  "partners": ["Digital Wallonia", "Open Recognition Belgium"]
+  "partners": [
+    "Digital Wallonia",
+    "Open Recognition Belgium"
+  ]
 }
