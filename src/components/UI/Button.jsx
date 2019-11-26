@@ -4,9 +4,9 @@ import { colors } from '../../styles/constants';
 
 // "medium" is default prop so must come last in conditionals
 const Button = styled.button`
-  background-color: ${props => (props.inverted ? 'inherit ' : colors.orange)};
+  background-color: ${props => (props.inverted ? '#fff ' : colors.orange)};
   color: ${props => (props.inverted ? colors.orange : '#fff')};
-  border: ${props => (props.inverted ? `2px solid ${colors.orange}` : 'none')};
+  border: ${props => (props.inverted ? `2px solid ${colors.orange}` : '2px solid #fff')};
   border-radius: 3.2rem 0;
   font-size: ${props =>
     (props.big && '1.6rem') || (props.small && '1.3rem') || (props.medium && '1.4rem')};
@@ -16,6 +16,9 @@ const Button = styled.button`
     (props.medium && '1.6rem 2.2rem')};
   :hover {
     cursor: pointer;
+    background-color: ${props => (props.inverted ? colors.orange : '#fff')};
+    color: ${props => (props.inverted ? '#fff' : colors.orange)};
+    border: ${props => (props.inverted ? '2px solid #fff' : `2px solid ${colors.orange}`)};
   }
   transition: all 300ms;
 `;
