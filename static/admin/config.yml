@@ -20,6 +20,7 @@ collections:
     folder: src/cms/project
     identifier_field: name
     slug: '{{name}}-{{month}}-{{year}}'
+    preview_path: projects/{{slug}}
     create: true
     fields:
       - name: crest
