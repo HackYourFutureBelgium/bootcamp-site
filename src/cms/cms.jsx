@@ -5,8 +5,10 @@ import CMS from 'netlify-cms-app';
 import cloudinary from 'netlify-cms-media-library-cloudinary';
 
 import PersonPreview from './templates/Person';
+import PartnerPreview from './templates/Partner';
 
 CMS.registerPreviewTemplate('person', PersonPreview);
+CMS.registerPreviewTemplate('partner', PartnerPreview);
 
 /* eslint-disable react/require-default-props */
 // see https://github.com/netlify/netlify-cms/issues/1407
