@@ -6,9 +6,11 @@ import cloudinary from 'netlify-cms-media-library-cloudinary';
 
 import PersonPreview from './templates/Person';
 import PartnerPreview from './templates/Partner';
+import ProjectPreview from './templates/Project';
 
 CMS.registerPreviewTemplate('person', PersonPreview);
 CMS.registerPreviewTemplate('partner', PartnerPreview);
+CMS.registerPreviewTemplate('project', ProjectPreview);
 
 /* eslint-disable react/require-default-props */
 // see https://github.com/netlify/netlify-cms/issues/1407

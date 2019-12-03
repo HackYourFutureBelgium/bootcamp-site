@@ -114,7 +114,7 @@ const TeamSection = styled.section`
 
 const PageContents = ({ project, fullRender }) => {
   const $partners = project.partners.map(p => (
-    <ExternalLink key={p.id} href={p.website}>
+    <ExternalLink key={p.name} href={p.website}>
       <img src={p.logo} alt={`${p.name} logo`} />
     </ExternalLink>
   ));
