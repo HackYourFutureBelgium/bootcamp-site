@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import slugify from 'slugify';
 import { Link } from 'gatsby';
-
+import Truncate from 'react-truncate';
+import Markdown from 'markdown-to-jsx';
 import { colors } from '../styles/constants';
 import { Button, Card, ExternalLink, TextTruncate } from './UI';
 import { partialProjectType } from '../types';
@@ -36,6 +37,11 @@ const Project = styled(Card)`
       'content content'
       'footer footer';
   }
+`;
+
+const ProjectDate = styled.span`
+  display: block;
+  margin-bottom: 1rem;
 `;
 
 const Crest = styled(Link)`
@@ -123,10 +129,12 @@ const ProjectCard = ({ id, year, crest, name, month, description, twoDigitMonth,
         <h3>
           <Link to={href}>{name}</Link>
         </h3>
-        <span>
+        <ProjectDate>
           {month} {year}
-        </span>
-        <TextTruncate element="div" line={2} text={description} />
+        </ProjectDate>
+        <Truncate lines={2}>
+          <Markdown>{description}</Markdown>
+        </Truncate>
       </Content>
       <Footer>
         <div>

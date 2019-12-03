@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Markdown from 'markdown-to-jsx';
 import { Link } from 'gatsby';
 
 import SEO from '../components/SEO';
@@ -135,7 +136,7 @@ const PageContents = ({ project, fullRender }) => {
           </Crest>
           <ProjectDescription>
             <h2>{project.name}</h2>
-            <p>{project.description}</p>
+            <Markdown>{project.description}</Markdown>
           </ProjectDescription>
           <ExternalLink href="mailto:contact@hackyourfuture.be">
             <Button inverted>Hire our graduates!</Button>
