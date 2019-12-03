@@ -131,38 +131,47 @@ const PageContents = ({ project, fullRender }) => {
       <TopSection>
         {fullRender && <Link to="/projects">&lt; Our projects</Link>}
         <ProjectSection>
-          <Crest>
-            <img src={project.crest} alt={`${project.name} crest`} />
-          </Crest>
+          {project.crest && (
+            <Crest>
+              <img src={project.crest} alt={`${project.name} crest`} />
+            </Crest>
+          )}
           <ProjectDescription>
             <h2>{project.name}</h2>
             <Markdown>{project.description || 'No description available.'}</Markdown>
           </ProjectDescription>
-          <ExternalLink href="mailto:contact@hackyourfuture.be">
-            <Button inverted>Hire our graduates!</Button>
-          </ExternalLink>
-          <Partners>
-            <h3>Partners</h3>
-            <div>{$partners}</div>
-          </Partners>
+          {fullRender && (
+            <ExternalLink href="mailto:contact@hackyourfuture.be">
+              <Button inverted>Hire our graduates!</Button>
+            </ExternalLink>
+          )}
+          {$partners.length > 0 && (
+            <Partners>
+              <h3>Partners</h3>
+              <div>{$partners}</div>
+            </Partners>
+          )}
         </ProjectSection>
       </TopSection>
-      <TeamSection>
-        <h2>
-          Meet the <strong>team</strong>
-        </h2>
-        <PersonDetailGallery people={team} />
-      </TeamSection>
+      {team.length > 0 && (
+        <TeamSection>
+          <h2>
+            Meet the <strong>team</strong>
+          </h2>
+          <PersonDetailGallery people={team} />
+        </TeamSection>
+      )}
     </>
   );
 };
 
 PageContents.defaultProps = {
-  fullRender: false
+  fullRender: false,
+  project: {}
 };
 
 PageContents.propTypes = {
-  project: PropTypes.shape(projectType).isRequired,
+  project: PropTypes.shape(projectType),
   fullRender: PropTypes.bool
 };
 

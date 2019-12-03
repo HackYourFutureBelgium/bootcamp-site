@@ -1,33 +1,33 @@
 import { string, arrayOf } from 'prop-types';
 
 export const partnerType = {
-  logo: string.isRequired,
-  name: string.isRequired,
-  website: string.isRequired
+  logo: string,
+  name: string,
+  website: string
 };
 
 export const personType = {
-  lastName: string.isRequired,
-  firstName: string.isRequired,
-  role: string.isRequired,
+  lastName: string,
+  firstName: string,
+  role: string,
   twitter: string,
   linkedIn: string,
   email: string,
   github: string,
   tags: arrayOf(string),
-  picture: string.isRequired
+  picture: string
 };
 
 export const partialProjectType = {
-  crest: string.isRequired,
-  name: string.isRequired,
-  description: string.isRequired
+  crest: string,
+  name: string,
+  description: string
 };
 
 export const projectType = {
-  crest: string.isRequired,
-  name: string.isRequired,
-  description: string.isRequired,
-  date: string.isRequired,
+  crest: string,
+  name: string,
+  description: string,
+  date: string,
   github: string
 };

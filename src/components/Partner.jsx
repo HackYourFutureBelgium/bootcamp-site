@@ -18,11 +18,14 @@ const PartnerImage = styled.img`
   }
 `;
 
-const Partner = ({ name, logo, website, ...rest }) => (
-  <PartnerLink href={website} {...rest}>
-    <PartnerImage src={logo} alt={`${name} logo`} />
-  </PartnerLink>
-);
+const Partner = ({ name, logo, website, ...rest }) => {
+  if (!name || !logo) return null;
+  return (
+    <PartnerLink href={website} {...rest}>
+      <PartnerImage src={logo} alt={`${name} logo`} />
+    </PartnerLink>
+  );
+};
 
 Partner.propTypes = { ...partnerType };
 

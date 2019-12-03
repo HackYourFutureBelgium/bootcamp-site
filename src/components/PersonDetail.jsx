@@ -63,12 +63,16 @@ const HeadshotCard = ({
   const fullName = `${firstName} ${lastName}`;
   return (
     <Card {...rest}>
-      <HeadshotContainer>
-        <img src={picture} alt={fullName} />
-      </HeadshotContainer>
-      <h4>
-        <strong>{fullName}</strong>
-      </h4>
+      {picture && (
+        <HeadshotContainer>
+          <img src={picture} alt={fullName} />
+        </HeadshotContainer>
+      )}
+      {(firstName || lastName) && (
+        <h4>
+          <strong>{fullName}</strong>
+        </h4>
+      )}
       <p>{role}</p>
       <Socials>
         {linkedIn && (
