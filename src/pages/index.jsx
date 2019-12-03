@@ -328,7 +328,7 @@ const IndexPage = () => {
         <h2>
           Meet the <span className="stronger">team</span>
         </h2>
-        <PersonDetailGallery people={team.reverse()} />
+        <PersonDetailGallery displayEmails people={team.reverse()} />
       </Team>
     </Layout>
   );

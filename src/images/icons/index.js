@@ -4,6 +4,7 @@ export { default as codeEditorIcon } from './code-editor.svg';
 export { default as emailIconWhite } from './email-white.svg';
 export { default as emailIcon } from './email.svg';
 export { default as facebookIcon } from './facebook.svg';
+export { default as githubIconWhite } from './github-white.svg';
 export { default as linkedInIcon } from './linkedin.svg';
 export { default as markerIcon } from './location.svg';
 export { default as peopleIcon } from './people.svg';

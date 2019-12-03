@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ExternalLink from './UI/ExternalLink';
 import { colors, fonts } from '../styles/constants';
-import { linkedInIcon, twitterIconWhite, emailIconWhite } from '../images/icons';
+import { githubIconWhite, linkedInIcon, twitterIconWhite, emailIconWhite } from '../images/icons';
 import { personType } from '../types';
 
 const Card = styled.div`
@@ -51,10 +52,12 @@ const SocialLink = styled(ExternalLink)`
 `;
 
 const HeadshotCard = ({
+  displayEmail,
   firstName,
   lastName,
   role,
   twitter,
+  github,
   linkedIn,
   email,
   picture,
@@ -85,7 +88,12 @@ const HeadshotCard = ({
             <img src={twitterIconWhite} alt={`Twitter of ${fullName}`} />
           </SocialLink>
         )}
-        {email && (
+        {github && (
+          <SocialLink href={github}>
+            <img src={githubIconWhite} alt={`GitHub of ${fullName}`} />
+          </SocialLink>
+        )}
+        {email && displayEmail && (
           <SocialLink href={`mailto:${email}`} openInNewTab={false}>
             <img src={emailIconWhite} alt={`Email of ${fullName}`} />
           </SocialLink>
@@ -95,6 +103,7 @@ const HeadshotCard = ({
   );
 };
 
+/* eslint-disable react/default-props-match-prop-types */
 HeadshotCard.defaultProps = {
   twitter: null,
   linkedIn: null,
@@ -102,6 +111,6 @@ HeadshotCard.defaultProps = {
   github: null
 };
 
-HeadshotCard.propTypes = { ...personType };
+HeadshotCard.propTypes = { ...personType, displayEmail: PropTypes.bool.isRequired };
 
 export default HeadshotCard;

@@ -24,14 +24,21 @@ const Mugshot = styled(PersonDetail)`
   }
 `;
 
-const PersonDetailGallery = ({ people }) => {
-  const $people = people.map(person => <Mugshot key={person.id} {...person} />);
+const PersonDetailGallery = ({ people, displayEmails }) => {
+  const $people = people.map(person => (
+    <Mugshot displayEmail={displayEmails} key={person.id} {...person} />
+  ));
 
   return <Pictures>{$people}</Pictures>;
 };
 
+PersonDetailGallery.defaultProps = {
+  displayEmails: false
+};
+
 PersonDetailGallery.propTypes = {
-  people: PropTypes.arrayOf(PropTypes.shape(personType)).isRequired
+  people: PropTypes.arrayOf(PropTypes.shape(personType)).isRequired,
+  displayEmails: PropTypes.bool
 };
 
 export default PersonDetailGallery;
