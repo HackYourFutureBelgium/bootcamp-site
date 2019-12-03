@@ -133,7 +133,7 @@ const ProjectCard = ({ id, year, crest, name, month, description, twoDigitMonth,
           {month} {year}
         </ProjectDate>
         <Truncate lines={2}>
-          <Markdown>{description}</Markdown>
+          <Markdown>{description || 'No description available.'}</Markdown>
         </Truncate>
       </Content>
       <Footer>

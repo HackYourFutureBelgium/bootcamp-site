@@ -136,7 +136,7 @@ const PageContents = ({ project, fullRender }) => {
           </Crest>
           <ProjectDescription>
             <h2>{project.name}</h2>
-            <Markdown>{project.description}</Markdown>
+            <Markdown>{project.description || 'No description available.'}</Markdown>
           </ProjectDescription>
           <ExternalLink href="mailto:contact@hackyourfuture.be">
             <Button inverted>Hire our graduates!</Button>
