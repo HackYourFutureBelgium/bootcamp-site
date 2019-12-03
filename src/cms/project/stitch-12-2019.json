@@ -1,0 +1,20 @@
+{
+  "crest": "https://res.cloudinary.com/open-knowledge-belgium/image/upload/c_fill,f_auto,h_400,q_90,w_400/v1575380733/Bootcamp%20site/crests/Stitch_ahf1ts.png",
+  "name": "Stitch",
+  "date": "2019-12-03",
+  "description": "Creation of a **companion for lifelong learners**. Putting skills first, and low-barrier recognition for them second. \n\nToday’s world increasingly consists of lifelong learners - people who accept learning doesn’t stop after you’ve finished school. They have to accept it to keep up with ever-changing information, trends and industry standards. While our learning mindset is evolving, our way of recognizing that learning is falling behind.\n\n1. There's **a gap** between formal and informal recognition today\n2. Recognition is seen as a goal, instead of a **result of achieving competence**\n3. Current solutions for recognition either miss or don't capture valuable **context**\n\nStitch solves this problem!",
+  "github": "https://github.com/HackYourFutureBelgium/bootcamp1-stitch",
+  "team": [
+    "2bbbd4f5-d9b0-4a40-ade3-33159a099159",
+    "b66bb4e9-1628-4eb6-9418-70327b1069c2",
+    "d02e5b63-d2c2-4683-80e4-4225a435b94d",
+    "047a1c51-63e4-4449-9572-9fa9dafe8411",
+    "41b2e109-348e-4733-af55-669385a670a9",
+    "c261d38f-fb30-4483-bb9f-3d2ff7f74f6b",
+    "225510fc-81a8-4715-baf0-0a93556bed4b"
+  ],
+  "partners": [
+    "Artevelde University College",
+    "Open Recognition Belgium"
+  ]
+}
