@@ -8,16 +8,10 @@ const PersonPreview = props => {
   const pictureData = entry.getIn(['data', 'picture']);
   const picture = props.getAsset(pictureData);
 
-  const fields = ['firstName', 'lastName', 'role', 'twitter', 'linkedIn', 'email', 'github'].reduce(
-    (all, field) => {
-      all[field] = entry.getIn(['data', field]);
-      return all;
-    },
-    {}
-  );
+  const { data } = entry.toJS();
   return (
     <StyleInjector>
-      <PersonDetail {...fields} picture={picture} />
+      <PersonDetail {...data} picture={picture} />
     </StyleInjector>
   );
 };
@@ -25,7 +19,8 @@ const PersonPreview = props => {
 PersonPreview.propTypes = {
   getAsset: PropTypes.func.isRequired,
   entry: PropTypes.shape({
-    getIn: PropTypes.func
+    getIn: PropTypes.func,
+    toJS: PropTypes.func
   }).isRequired
 };
 

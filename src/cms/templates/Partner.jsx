@@ -8,14 +8,10 @@ const PartnerPreview = props => {
   const logoData = entry.getIn(['data', 'logo']);
   const logo = props.getAsset(logoData);
 
-  const fields = ['name', 'website'].reduce((all, field) => {
-    all[field] = entry.getIn(['data', field]);
-    return all;
-  }, {});
-
+  const { data } = entry.toJS();
   return (
     <StyleInjector>
-      <Partner {...fields} logo={logo} />
+      <Partner {...data} logo={logo} />
     </StyleInjector>
   );
 };
@@ -23,7 +19,8 @@ const PartnerPreview = props => {
 PartnerPreview.propTypes = {
   getAsset: PropTypes.func.isRequired,
   entry: PropTypes.shape({
-    getIn: PropTypes.func
+    getIn: PropTypes.func,
+    toJS: PropTypes.func
   }).isRequired
 };
 
