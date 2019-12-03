@@ -61,6 +61,10 @@ const GlobalStyle = createGlobalStyle`
   .stronger {
     font-weight: 600;
   }
+
+  ol li {
+    line-height: 1.6;
+  }
 `;
 
 export default GlobalStyle;

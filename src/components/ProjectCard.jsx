@@ -55,6 +55,7 @@ const Crest = styled(Link)`
     display: none;
   }
   img {
+    border-radius: 50%;
     max-width: 100%;
   }
 `;
