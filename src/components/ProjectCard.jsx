@@ -6,7 +6,7 @@ import { Link } from 'gatsby';
 import Truncate from 'react-truncate';
 import Markdown from 'markdown-to-jsx';
 import { colors } from '../styles/constants';
-import { Button, Card, ExternalLink, TextTruncate } from './UI';
+import { Button, Card, ExternalLink } from './UI';
 import { partialProjectType } from '../types';
 
 const Project = styled(Card)`
