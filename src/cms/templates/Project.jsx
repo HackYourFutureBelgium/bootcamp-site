@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import StyleInjector from './StyleInjector';
 import Project from '../../templates/ProjectDetail';
 
-const ProjectPreview = ({ entry, fieldsMetaData, widgetsFor }) => {
+const ProjectPreview = ({ entry, fieldsMetaData }) => {
   const { data } = entry.toJS();
 
   const partners = data.partners.reduce((all, p) => {
@@ -28,6 +28,9 @@ const ProjectPreview = ({ entry, fieldsMetaData, widgetsFor }) => {
 ProjectPreview.propTypes = {
   entry: PropTypes.shape({
     toJS: PropTypes.func
+  }).isRequired,
+  fieldsMetaData: PropTypes.shape({
+    getIn: PropTypes.func
   }).isRequired
 };
 
