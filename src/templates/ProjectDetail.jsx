@@ -112,7 +112,7 @@ const TeamSection = styled.section`
   margin-top: 5rem;
 `;
 
-const ProjectDetail = ({ pageContext: project }) => {
+const PageContents = ({ project, fullRender }) => {
   const $partners = project.partners.map(p => (
     <ExternalLink key={p.id} href={p.website}>
       <img src={p.logo} alt={`${p.name} logo`} />
@@ -126,10 +126,9 @@ const ProjectDetail = ({ pageContext: project }) => {
   });
 
   return (
-    <PageContainer>
-      <SEO title={`${project.name} project`} />
+    <>
       <TopSection>
-        <Link to="/projects">&lt; Our projects</Link>
+        {fullRender && <Link to="/projects">&lt; Our projects</Link>}
         <ProjectSection>
           <Crest>
             <img src={project.crest} alt={`${project.name} crest`} />
@@ -153,12 +152,43 @@ const ProjectDetail = ({ pageContext: project }) => {
         </h2>
         <PersonDetailGallery people={team} />
       </TeamSection>
+    </>
+  );
+};
+
+PageContents.defaultProps = {
+  fullRender: false
+};
+
+PageContents.propTypes = {
+  project: PropTypes.shape(projectType).isRequired,
+  fullRender: PropTypes.bool
+};
+
+const ProjectDetail = props => {
+  const { pageContext } = props;
+  // are we rendering a dynamic page or rendering a CMS preview
+  const project = pageContext || props.project;
+
+  // if rendering CMS preview, return simplified view
+  if (!pageContext) return <PageContents project={project} />;
+  // if full page, return full view
+  return (
+    <PageContainer>
+      <SEO title={`${project.name} project`} />
+      <PageContents fullRender={!!pageContext} project={project} />
     </PageContainer>
   );
 };
 
+ProjectDetail.defaultProps = {
+  pageContext: null,
+  project: null
+};
+
 ProjectDetail.propTypes = {
-  pageContext: PropTypes.shape({ ...projectType }).isRequired
+  pageContext: PropTypes.shape({ ...projectType }),
+  project: PropTypes.shape({ ...projectType })
 };
 
 export default ProjectDetail;
