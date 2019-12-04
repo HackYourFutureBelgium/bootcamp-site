@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { graphql, useStaticQuery } from 'gatsby';
 import Header from './Header';
 import Footer from './Footer';
 import GlobalStyle from '../styles';
@@ -48,6 +49,24 @@ const NextBootcampIndicator = styled.aside`
 
 const Layout = ({ flex, children, ...rest }) => {
   const ContentWrapper = flex ? FlexedMain : Main;
+  const { allMetaData } = useStaticQuery(graphql`
+    query {
+      allMetaData: allMetadataJson {
+        edges {
+          node {
+            nextBootcamp
+          }
+        }
+      }
+    }
+  `);
+  const { nextBootcamp } = allMetaData.edges[0].node;
+
+  const formattedBootcampDate = new Date(nextBootcamp).toLocaleString('en-be', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
 
   return (
     <>
@@ -55,7 +74,7 @@ const Layout = ({ flex, children, ...rest }) => {
       <PageContainer>
         <Header />
         <NextBootcampIndicator>
-          Next bootcamp starting on <strong>January 12th 2019</strong>
+          Next bootcamp starting on <strong>{formattedBootcampDate}</strong>
         </NextBootcampIndicator>
         <ContentWrapper {...rest} flex={flex}>
           {children}
