@@ -21,7 +21,7 @@ const Main = styled.main`
   display: block;
   width: 100%;
   padding-top: ${dimensions.header.height.large}rem;
-  max-width: 120rem;
+  max-width: 132rem;
   margin: 0 auto;
 `;
 
