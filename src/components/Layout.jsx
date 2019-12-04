@@ -31,6 +31,16 @@ const FlexedMain = styled(Main)`
   flex-flow: column;
 `;
 
+const NextBootcampIndicator = styled.aside`
+  position: absolute;
+  top: ${dimensions.header.height.large};
+  right: 0;
+  padding: 2rem;
+  color: #fff;
+  background: ${colors.purple};
+  z-index: 10;
+`;
+
 const Layout = ({ flex, children, ...rest }) => {
   const ContentWrapper = flex ? FlexedMain : Main;
 
@@ -40,6 +50,9 @@ const Layout = ({ flex, children, ...rest }) => {
       <PageContainer>
         <Header />
         <ContentWrapper {...rest} flex={flex}>
+          <NextBootcampIndicator>
+            Next bootcamp starting on <strong>January 12th 2019</strong>
+          </NextBootcampIndicator>
           {children}
         </ContentWrapper>
         <Footer />
