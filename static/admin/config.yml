@@ -169,6 +169,7 @@ collections:
   - name: meta
     label: Metadata
     format: json
+    delete: false
     files:
       - label: Metadata
         name: meta
