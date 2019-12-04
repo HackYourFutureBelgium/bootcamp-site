@@ -166,3 +166,15 @@ collections:
           widget: boolean,
           default: true,
         }
+  - name: meta
+    label: Metadata
+    format: json
+    folder: src/cms/metadata
+    identifier_field: title
+    fields:
+      - name: nextBootcamp
+        label: Next bootcamp
+        widget: datetime
+        format: 'YYYY-MM-DD'
+        dateFormat: 'dddd MMMM Do YYYY'
+        timeFormat: false
