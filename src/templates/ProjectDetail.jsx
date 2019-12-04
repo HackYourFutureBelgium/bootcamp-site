@@ -130,7 +130,7 @@ const PageContents = ({ project, fullRender }) => {
   return (
     <>
       <TopSection>
-        {fullRender && <Link to="/projects">&lt; Our projects</Link>}
+        {fullRender && <Link to="/projects">&lt; All projects</Link>}
         <ProjectSection>
           {project.crest && (
             <Crest>

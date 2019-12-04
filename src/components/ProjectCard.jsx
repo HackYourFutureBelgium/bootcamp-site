@@ -99,6 +99,10 @@ const Footer = styled.footer`
   }
 `;
 
+const Description = styled.div`
+  line-height: 1.6;
+`;
+
 const Partners = styled.div``;
 
 const PartnerLink = styled(ExternalLink)`
@@ -133,9 +137,11 @@ const ProjectCard = ({ id, year, crest, name, month, description, twoDigitMonth,
         <ProjectDate>
           {month} {year}
         </ProjectDate>
-        <Truncate lines={2}>
-          <Markdown>{description || 'No description available.'}</Markdown>
-        </Truncate>
+        <Description>
+          <Truncate lines={2}>
+            <Markdown>{description || 'No description available.'}</Markdown>
+          </Truncate>
+        </Description>
       </Content>
       <Footer>
         <div>

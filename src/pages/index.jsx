@@ -129,7 +129,7 @@ const WhoCanApplyCard = styled(Card)`
   flex-direction: column;
   position: absolute;
   left: 30%;
-  top: 18rem;
+  top: 14rem;
   z-index: 2;
   @media (max-width: 1000px) {
     position: static;
@@ -250,10 +250,10 @@ const IndexPage = () => {
       <TopSection image={headerImage.childImageSharp.fixed.src}>
         <HeaderCard>
           <p>
-            <strong>HackYourFuture&apos;s Bootcamp</strong> boosts refugees&apos; opportunities in
-            the <strong>Belgian job market</strong> through the development of{' '}
-            <strong>real-world</strong>, <strong>open source</strong>,{' '}
-            <strong>positive impact</strong> projects.
+            We get <strong>newly arrived talent</strong> acquainted with the skills, collaboration,
+            processes and industry best practices expected in a Belgian software organisation by
+            working on <strong>real-world</strong>, <strong>open source</strong> projects with
+            <strong>social impact</strong>.
           </p>
         </HeaderCard>
         <ValueWrapper>
@@ -280,7 +280,7 @@ const IndexPage = () => {
             open source projects with a <Highlight>positive impact</Highlight>
           </p>
           <p>
-            career starter for the <Highlight>Belgian IT industry</Highlight>
+            career starter in the <Highlight>Belgian IT industry</Highlight>
           </p>
         </ValueWrapper>
       </TopSection>
@@ -297,16 +297,19 @@ const IndexPage = () => {
           </h2>
           <ul>
             <li>
-              You are very <strong className="stronger">motivated</strong>
+              You are <strong className="stronger">highly motivated</strong> to join the bootcamp
+              and start your career in the IT labour market
             </li>
             <li>
-              You have <strong>experience</strong> in <strong>web development</strong>
+              You have <strong>strong knowledge</strong> of <strong>web development</strong>. If
+              just starting out, <a href="https://hackyourfuture.be">our training</a> may be better
+              suited for you.
             </li>
             <li>
               You <strong>speak &amp; understand English</strong> at an intermediate level
             </li>
             <li>
-              You are able to follow the bootcamp <strong>Monday-Thursday</strong> during the{' '}
+              You are able to follow the bootcamp <strong>Monday-Thursday</strong> during{' '}
               <strong>4 weeks.</strong>
             </li>
           </ul>

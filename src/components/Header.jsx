@@ -187,7 +187,7 @@ const Header = () => {
           ref={nav}
         >
           <NavItem>
-            <Link to="/projects">Our projects</Link>
+            <Link to="/projects">Projects</Link>
           </NavItem>
           <NavItem>
             <Link to="/partners">Partners</Link>

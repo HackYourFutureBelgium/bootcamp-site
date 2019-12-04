@@ -168,7 +168,7 @@ const Projects = () => {
 
   return (
     <Layout>
-      <SEO title="Our projects" />
+      <SEO title="Projects" />
       <IntroContainer>
         <IntroContent>
           <h2>
@@ -176,8 +176,8 @@ const Projects = () => {
           </h2>
           <p>
             Newly arrived refugees lack the local network, but do have the skills to{' '}
-            <strong>start their career in Belgium</strong>. Our bootcamp allows them to show what
-            they can do by working on <strong>local impactful project</strong> while being{' '}
+            <strong>start their career in Belgium</strong>. Our bootcamp allows them to put their
+            knowledge into practice working on <strong>local impactful project</strong> while being{' '}
             <strong>coached by domain experts</strong>.
           </p>
           <CTA>
