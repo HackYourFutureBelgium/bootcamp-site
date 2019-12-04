@@ -14,7 +14,9 @@ const dataFilesystemSources = ['person', 'project', 'partner'].map(resource => (
 module.exports = {
   siteMetadata: {
     title: `HackYourFuture Bootcamp`,
-    description: `HackYourFuture's bootcamp boosts refugees' opportunities in the Belgian job market through the development of real-world, open source, positive impact projects.`,
+    description: `We get newly arrived talent acquainted with the skills, collaboration,
+    processes and industry best practices expected in a Belgian software organisation by
+    working on real-world, open source projects with social impact.`,
     twitterHandle: `@HackYFutureBE`,
     twitter: `https://twitter.com/HackYFutureBE`,
     url: `https://bootcamp.hackyourfuture.be`,
