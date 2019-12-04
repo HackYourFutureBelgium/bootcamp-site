@@ -4,7 +4,8 @@ import { useStaticQuery, graphql } from 'gatsby';
 import SEO from '../components/SEO';
 import Layout from '../components/Layout';
 import FeaturedPartners from '../components/FeaturedPartners';
-import { ExternalLink, Button } from '../components/UI';
+import { Card, ExternalLink, Button, DottedGraphic as Dots } from '../components/UI';
+import { colors } from '../styles/constants';
 
 const PageContainer = styled(Layout)`
   width: 100%;
@@ -16,7 +17,7 @@ const PageContainer = styled(Layout)`
 const IntroContainer = styled.div`
   width: 100%;
   padding-top: 6rem;
-  padding-left: 8%;
+  padding-left: 4rem;
   background-image: url(${props => props.image});
   background-repeat: no-repeat;
   background-position: top right;
@@ -52,8 +53,77 @@ const IntroContainer = styled.div`
   }
 `;
 
+const BrochureSection = styled.section`
+  width: 40rem;
+  margin-left: auto;
+  position: relative;
+  padding-top: 0;
+  @media (min-width: 800px) {
+    margin-top: -12rem;
+  }
+  @media (min-width: 1040px) {
+    margin-top: 6rem;
+  }
+  @media (max-width: 800px) {
+    margin-top: 6rem;
+  }
+  @media (max-width: 580px) {
+    margin-right: auto;
+    width: 100%;
+  }
+`;
+
+const BrochureCard = styled(Card)`
+  padding-bottom: 6rem;
+  padding-top: 2rem;
+  position: relative;
+  z-index: 2;
+  a {
+    color: ${colors.orange};
+    border-bottom: 1px solid ${colors.orange};
+  }
+`;
+
+const DottedGraphic = styled(Dots)`
+  position: absolute;
+  right: 20rem;
+  top: 6rem;
+  @media (max-width: 1040px) {
+    display: none;
+  }
+`;
+
+const Proposals = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 12rem auto 0;
+  @media (max-width: 1040px) {
+    margin-top: 6rem;
+  }
+  @media (max-width: 620px) {
+    flex-direction: column;
+    width: 90%;
+  }
+`;
+
+const Proposal = styled(Card)`
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 620px) {
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+`;
+
+const ContactLink = styled(ExternalLink)`
+  align-self: flex-end;
+  margin-top: auto;
+`;
+
 const PartnerContainer = styled.section`
-  margin-top: 6rem;
+  margin-top: 8rem;
   width: 100%;
   padding-right: 8%;
   padding-bottom: 10rem;
@@ -139,8 +209,42 @@ const Partners = () => {
         <ExternalLink href="mailto:contact@hackyourfuture.be">
           <Button inverted>Become our partner</Button>
         </ExternalLink>
+        <BrochureSection>
+          <h3>
+            Check out our <strong>partner brochure</strong>
+          </h3>
+          <DottedGraphic amountHigh={5} />
+          <BrochureCard>
+            <a href="/bootcamp-brochure-1.0.pdf">Download the partner brochure</a>
+          </BrochureCard>
+        </BrochureSection>
       </IntroContainer>
-      {/* TODO add concrete proposals here */}
+      <Proposals>
+        <Proposal hasAccent={false}>
+          <h3>Bootcamp partner</h3>
+          <p>
+            Help the web developers of tomorrow get their first real-world project experience.
+            You&apos;ll be contributing to diversity in the IT sector.
+          </p>
+          <ContactLink href="mailto:contact@hackyourfuture.be">
+            <Button inverted small>
+              More information &gt;
+            </Button>
+          </ContactLink>
+        </Proposal>
+        <Proposal hasAccent={false}>
+          <h3>Hiring partner</h3>
+          <p>
+            Get priority access to the bootcamp graduates, and be updated when new candidates are
+            available.
+          </p>
+          <ContactLink href="mailto:contact@hackyourfuture.be">
+            <Button inverted small>
+              More information &gt;
+            </Button>
+          </ContactLink>
+        </Proposal>
+      </Proposals>
       <PartnerContainer image={huddleImage.childImageSharp.fixed.src}>
         <PartnerGrid right />
       </PartnerContainer>

@@ -6,6 +6,9 @@ import { colors } from '../../styles/constants';
 const StyledCard = styled.article`
   background: #fff;
   padding: 2rem 3rem;
+`;
+
+const BorderedCard = styled(StyledCard)`
   ${props =>
     props.accentPosition === 'left'
       ? `
@@ -18,16 +21,19 @@ const StyledCard = styled.article`
         `}
 `;
 
-const Card = ({ children, ...rest }) => {
-  return <StyledCard {...rest}>{children}</StyledCard>;
+const Card = ({ children, hasAccent, ...rest }) => {
+  if (!hasAccent) return <StyledCard {...rest}>{children}</StyledCard>;
+  return <BorderedCard {...rest}>{children}</BorderedCard>;
 };
 
 Card.defaultProps = {
-  accentPosition: 'left'
+  accentPosition: 'left',
+  hasAccent: true
 };
 
 Card.propTypes = {
   children: PropTypes.node.isRequired,
+  hasAccent: PropTypes.bool,
   accentPosition: PropTypes.oneOf(['left', 'right'])
 };
 
