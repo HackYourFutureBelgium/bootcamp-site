@@ -10,6 +10,7 @@ import { dimensions, colors, transitionTimes, animations } from '../styles/const
 const HeaderStyle = styled.header`
   background-color: #fff;
   width: 100vw;
+  max-width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
