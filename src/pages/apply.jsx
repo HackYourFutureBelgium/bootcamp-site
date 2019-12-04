@@ -29,6 +29,12 @@ const IntroContainer = styled.div`
       width: 80%;
     }
   }
+  @media (max-width: 700px) {
+    padding-top: 2rem;
+  }
+  @media (max-width: 500px) {
+    padding-top: 0;
+  }
   @media (max-width: 600px) {
     p {
       width: 100%;

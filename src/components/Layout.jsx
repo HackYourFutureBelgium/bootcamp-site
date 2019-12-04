@@ -33,12 +33,17 @@ const FlexedMain = styled(Main)`
 
 const NextBootcampIndicator = styled.aside`
   position: absolute;
-  top: ${dimensions.header.height.large};
+  top: ${dimensions.header.height.large}rem;
   right: 0;
-  padding: 2rem;
+  padding: 1.5rem;
+  font-size: 1.4rem;
   color: #fff;
   background: ${colors.purple};
-  z-index: 10;
+  z-index: 5;
+  @media (max-width: 500px) {
+    width: 100%;
+    position: relative;
+  }
 `;
 
 const Layout = ({ flex, children, ...rest }) => {
@@ -49,10 +54,10 @@ const Layout = ({ flex, children, ...rest }) => {
       <GlobalStyle />
       <PageContainer>
         <Header />
+        <NextBootcampIndicator>
+          Next bootcamp starting on <strong>January 12th 2019</strong>
+        </NextBootcampIndicator>
         <ContentWrapper {...rest} flex={flex}>
-          <NextBootcampIndicator>
-            Next bootcamp starting on <strong>January 12th 2019</strong>
-          </NextBootcampIndicator>
           {children}
         </ContentWrapper>
         <Footer />

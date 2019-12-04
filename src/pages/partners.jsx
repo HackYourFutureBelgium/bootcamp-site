@@ -33,7 +33,7 @@ const IntroContainer = styled.div`
   }
   @media (max-width: 780px) {
     background-image: none;
-    padding-top: 0;
+    padding-top: 2rem;
     margin-top: 4rem;
     p {
       width: 80%;
@@ -46,6 +46,9 @@ const IntroContainer = styled.div`
     p {
       width: 100%;
     }
+  }
+  @media (max-width: 500px) {
+    padding-top: 0;
   }
   > a {
     margin-top: 2rem;
