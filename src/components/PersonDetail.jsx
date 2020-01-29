@@ -51,6 +51,10 @@ const SocialLink = styled(ExternalLink)`
   }
 `;
 
+const CenteredRole = styled.p`
+  text-align: center;
+`;
+
 const HeadshotCard = ({
   displayEmail,
   firstName,
@@ -76,7 +80,7 @@ const HeadshotCard = ({
           <strong>{fullName}</strong>
         </h4>
       )}
-      <p>{role}</p>
+      <CenteredRole>{role}</CenteredRole>
       <Socials>
         {linkedIn && (
           <SocialLink href={linkedIn}>
