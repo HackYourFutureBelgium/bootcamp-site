@@ -164,7 +164,9 @@ const Projects = () => {
     .reverse()
     .map(renderTabs);
 
-  const $projects = Object.keys(populatedProjectsByYear).map(renderProjects);
+  const $projects = Object.keys(populatedProjectsByYear)
+    .reverse()
+    .map(renderProjects);
 
   return (
     <Layout>
